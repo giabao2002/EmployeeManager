@@ -52,7 +52,9 @@ exports.addEducation = (req, res) => {
 };
 
 exports.updateEducation = (req, res) => {
-  Joi.validate(req.body, EducationValidation, (err, result) => {
+  console.log("Body: ", req.body)
+  const { id, ...education } = req.body;
+  Joi.validate(education, EducationValidation, (err, result) => {
     if (err) {
       res.status(400).send(err.details[0].message);
     } else {
@@ -63,7 +65,7 @@ exports.updateEducation = (req, res) => {
         PassingOfYear: req.body.PassingOfYear,
       };
 
-      Education.findByIdAndUpdate(req.params.id, newEducation, (err, education) => {
+      Education.findByIdAndUpdate(req.body.id, newEducation, (err, education) => {
         if (err) {
           res.status(500).send(err);
         } else {

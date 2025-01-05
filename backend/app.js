@@ -71,16 +71,28 @@ app.use("/api/family-info", familyInfoRoutes);
 app.use("/api/work-experience", workExperienceRoutes);
 
 
-app.get("/api/employee-salary/:id", verifyEmployee, (req, res) => {
-  Employee.find({ _id: req.params.id })
-    .populate({ path: "salary" })
-    .select("FirstName LastName MiddleName DateOfJoining TerminateDate")
-    .exec(function (err, company) {
-      let filteredCompany = company.filter(
-        (data) => data["salary"].length == 1
-      );
-      res.send(filteredCompany);
-    });
+app.get("/api/employee-salary/:id", verifyEmployee, async (req, res) => {
+  try {
+    const employee = await Employee.findById(req.params.id)
+      .populate({ path: "salary" })
+      .select("FirstName LastName MiddleName DateOfJoining TerminateDate");
+
+    if (!employee) {
+      return res.status(404).send("Employee not found");
+    }
+
+    const rewards = await Reward.find({ employee: req.params.id }).exec();
+
+    const result = {
+      ...employee._doc,
+      rewards,
+    };
+
+    res.send(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 app.get("/api/admin-salary", (req, res) => {
@@ -119,7 +131,7 @@ app.get("/api/employee-salary/:id/:year/:month?", verifyEmployee, async (req, re
     }, 0);
 
     const salary = employee.salary[0];
-    const finalSalary = salary.BasicSalary - salary.TaxDeduction + totalRewards;
+    const finalSalary = salary.BasicSalary - (salary.BasicSalary *  salary.TaxDeduction / 100) + totalRewards;
 
     const result = {
       ...employee._doc,

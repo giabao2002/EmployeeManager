@@ -1,4 +1,4 @@
-const { Employee } = require("../Models/Employee");
+const { Employee, EmployeePersonalInfoValidation } = require("../Models/Employee");
 const Joi = require("joi");
 
 const getPersonalInfoById = (req, res) => {

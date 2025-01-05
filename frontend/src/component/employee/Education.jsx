@@ -93,6 +93,7 @@ class Education extends Component {
     newInfo.preventDefault();
     console.log("zero data", newInfo.target[0].value);
     let body = {
+      id: info['_id'],
       SchoolUniversity: newInfo.target[0].value,
       Degree: newInfo.target[1].value,
       Grade: newInfo.target[2].value,
@@ -101,7 +102,7 @@ class Education extends Component {
     console.log("update", body);
     axios
       .put(
-        process.env.REACT_APP_API_URL + "/api/education/" + info["_id"],
+        process.env.REACT_APP_API_URL + "/api/education/" + this.props.data["_id"],
         body,
         {
           headers: {

@@ -52,7 +52,8 @@ exports.createFamilyInfo = (req, res) => {
 };
 
 exports.updateFamilyInfo = (req, res) => {
-  Joi.validate(req.body, FamilyInfoValidation, (err) => {
+  const {id, ...familyInfo} = req.body;
+  Joi.validate(familyInfo, FamilyInfoValidation, (err) => {
     if (err) {
       res.status(400).send(err.details[0].message);
     } else {
@@ -63,7 +64,7 @@ exports.updateFamilyInfo = (req, res) => {
         Occupation: req.body.Occupation,
       };
 
-      FamilyInfo.findByIdAndUpdate(req.params.id, newFamilyInfo, (err) => {
+      FamilyInfo.findByIdAndUpdate(req.body.id, newFamilyInfo, (err) => {
         if (err) {
           res.status(500).send(err);
         } else {

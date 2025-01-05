@@ -18,6 +18,8 @@ class EmployeeFormEdit extends Component {
     EmployeeCodeData: this.props.editData["EmployeeCode"],
     DateOfJoiningData: this.props.editData["DateOfJoining"].slice(0, 10),
     TerminateDateData: this.props.editData["TerminateDate"].slice(0, 10),
+    DepartmentSelected: this.props.editData["department"],
+    RoleSelected: this.props.editData["role"],
   };
   onEmailDataChange(e) {
     this.setState({ EmailData: e.target.value });
@@ -150,9 +152,15 @@ class EmployeeFormEdit extends Component {
               </Form.Label>
               <Col sm={10} className="form-input">
                 <Form.Control as="select" name="role">
-                  <option disabled selected>
-                    Chọn chức vụ
-                  </option>
+                  {this.state.RoleSelected.length > 0 ? (
+                    <option value={this.state.RoleSelected[0]["_id"]} selected>
+                      {this.state.RoleSelected[0]["RoleName"]}
+                    </option>
+                  ) : (
+                    <option disabled selected>
+                      Chọn chức vụ
+                    </option>
+                  )}
                   {this.state.roleData.map((data, index) => (
                     <option
                       key={index}
@@ -290,9 +298,18 @@ class EmployeeFormEdit extends Component {
               </Form.Label>
               <Col sm={10} className="form-input">
                 <Form.Control as="select" name="department" required>
-                  <option value="" disabled selected>
-                    Chọn phòng ban
-                  </option>
+                  {this.state.DepartmentSelected.length > 0 ? (
+                    <option
+                      value={this.state.DepartmentSelected[0]["_id"]}
+                      selected
+                    >
+                      {this.state.DepartmentSelected[0]["DepartmentName"]}
+                    </option>
+                  ) : (
+                    <option value="" disabled selected>
+                      Chọn phòng ban
+                    </option>
+                  )}
                   {this.state.departmentData.map((data, index) => (
                     <option
                       key={index}

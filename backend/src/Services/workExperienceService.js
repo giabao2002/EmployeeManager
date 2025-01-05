@@ -52,7 +52,8 @@ exports.createWorkExperience = (req, res) => {
 };
 
 exports.updateWorkExperience = (req, res) => {
-  Joi.validate(req.body, WorkExperienceValidation, (err) => {
+  const {id, ...workExperience} = req.body;
+  Joi.validate(workExperience, WorkExperienceValidation, (err) => {
     if (err) {
       res.status(400).send(err.details[0].message);
     } else {
@@ -63,7 +64,7 @@ exports.updateWorkExperience = (req, res) => {
         ToDate: req.body.ToDate,
       };
 
-      WorkExperience.findByIdAndUpdate(req.params.id, newWorkExperience, (err) => {
+      WorkExperience.findByIdAndUpdate(req.body.id, newWorkExperience, (err) => {
         if (err) {
           res.status(500).send(err);
         } else {

@@ -89,7 +89,6 @@ class Statistics extends Component {
   rowDataT = [];
 
   loadSalaryData = () => {
-    this.setState({ searchMonthData: "", searchYearData: "" });
     axios
       .get(
         process.env.REACT_APP_API_URL +
@@ -108,12 +107,10 @@ class Statistics extends Component {
         this.setState({ loading: false });
         this.rowDataT = [];
 
-        // ...existing code...
-        this.salaryObj.map((data) => {
-          const dateOfJoining = new Date(data["DateOfJoining"]);
+        const dateOfJoining = new Date(this.salaryObj["DateOfJoining"]);
           const currentDate = new Date();
-          const terminateDate = data["TerminateDate"]
-            ? new Date(data["TerminateDate"])
+          const terminateDate = this.salaryObj["TerminateDate"]
+            ? new Date(this.salaryObj["TerminateDate"])
             : null;
           const endDate =
             terminateDate && terminateDate < currentDate
@@ -127,70 +124,73 @@ class Statistics extends Component {
             const receivingDate = new Date(
               dateOfJoining.getFullYear(),
               dateOfJoining.getMonth() + i,
-              data["salary"][0]["ReceivingDate"]
+              this.salaryObj["salary"][0]["ReceivingDate"]
             );
 
-            if (receivingDate <= currentDate) {
-              let temp = {
-                data,
-                EmployeeCode: data["EmployeeCode"] ? data["EmployeeCode"] : "N/A",
-                EmployeeName:
-                  (data["LastName"] ? data["LastName"] : "") +
-                  " " +
-                  (data["MiddleName"] ? data["MiddleName"] : "") +
-                  " " +
-                  (data["FirstName"] ? data["FirstName"] : ""),
-                BasicSalary:
-                  data["salary"] &&
-                  data["salary"][0] &&
-                  data["salary"][0]["BasicSalary"]
-                    ? data["salary"][0]["BasicSalary"]
-                    : "N/A",
-                BankName:
-                  data["salary"] &&
-                  data["salary"][0] &&
-                  data["salary"][0]["BankName"]
-                    ? data["salary"][0]["BankName"]
-                    : "N/A",
-                AccountNo:
-                  data["salary"] &&
-                  data["salary"][0] &&
-                  data["salary"][0]["AccountNo"]
-                    ? data["salary"][0]["AccountNo"]
-                    : "N/A",
-                AccountHolderName:
-                  data["salary"] &&
-                  data["salary"][0] &&
-                  data["salary"][0]["AccountHolderName"]
-                    ? data["salary"][0]["AccountHolderName"]
-                    : "N/A",
-                IFSCcode:
-                  data["salary"] &&
-                  data["salary"][0] &&
-                  data["salary"][0]["IFSCcode"]
-                    ? data["salary"][0]["IFSCcode"]
-                    : "N/A",
-                TaxDeduction:
-                  data["salary"] &&
-                  data["salary"][0] &&
-                  data["salary"][0]["TaxDeduction"]
-                    ? data["salary"][0]["TaxDeduction"]
-                    : "N/A",
+            const bonus = this.salaryObj['rewards'].reduce((total, reward) => {
+              const rewardDate = new Date(reward.Date);
+              if (
+                rewardDate.getFullYear() === receivingDate.getFullYear() &&
+                rewardDate.getMonth() === receivingDate.getMonth()
+              ) {
+                return total + reward.Amount;
+              }
+              return total;
+            }, 0);
 
-                FinalSalary:
-                  data["salary"][0]["AmountOfViolation"] &&
-                  data["salary"][0]["AmountOfViolation"] > 0
-                    ? data["salary"][0]["BasicSalary"] -
-                      data["salary"][0]["AmountOfViolation"] -
-                      data["salary"][0]["TaxDeduction"]
-                    : data["salary"][0]["BasicSalary"] -
-                      data["salary"][0]["TaxDeduction"],
-                ReceivingDate: receivingDate.toLocaleDateString("en-GB"),
-              };
-              this.rowDataT.push(temp);
-            }
+            let temp = {
+              EmployeeCode: this.salaryObj["EmployeeCode"] ? this.salaryObj["EmployeeCode"] : "N/A",
+              EmployeeName:
+                (this.salaryObj["LastName"] ? this.salaryObj["LastName"] : "") +
+                " " +
+                (this.salaryObj["MiddleName"] ? this.salaryObj["MiddleName"] : "") +
+                " " +
+                (this.salaryObj["FirstName"] ? this.salaryObj["FirstName"] : ""),
+              BasicSalary:
+                this.salaryObj["salary"] &&
+                this.salaryObj["salary"][0] &&
+                this.salaryObj["salary"][0]["BasicSalary"]
+                  ? this.salaryObj["salary"][0]["BasicSalary"]
+                  : "N/A",
+              BankName:
+                this.salaryObj["salary"] &&
+                this.salaryObj["salary"][0] &&
+                this.salaryObj["salary"][0]["BankName"]
+                  ? this.salaryObj["salary"][0]["BankName"]
+                  : "N/A",
+              AccountNo:
+                this.salaryObj["salary"] &&
+                this.salaryObj["salary"][0] &&
+                this.salaryObj["salary"][0]["AccountNo"]
+                  ? this.salaryObj["salary"][0]["AccountNo"]
+                  : "N/A",
+              AccountHolderName:
+                this.salaryObj["salary"] &&
+                this.salaryObj["salary"][0] &&
+                this.salaryObj["salary"][0]["AccountHolderName"]
+                  ? this.salaryObj["salary"][0]["AccountHolderName"]
+                  : "N/A",
+              IFSCcode:
+                this.salaryObj["salary"] &&
+                this.salaryObj["salary"][0] &&
+                this.salaryObj["salary"][0]["IFSCcode"]
+                  ? this.salaryObj["salary"][0]["IFSCcode"]
+                  : "N/A",
+              TaxDeduction:
+                this.salaryObj["salary"] &&
+                this.salaryObj["salary"][0] &&
+                this.salaryObj["salary"][0]["TaxDeduction"]
+                  ? this.salaryObj["salary"][0]["TaxDeduction"]
+                  : "N/A",
+
+              FinalSalary:
+                this.salaryObj["salary"][0]["BasicSalary"] -
+                (this.salaryObj["salary"][0]["BasicSalary"] * this.salaryObj["salary"][0]["TaxDeduction"] / 100) +
+                bonus,
+              ReceivingDate: receivingDate.toLocaleDateString("en-GB"),
+            };
+            this.rowDataT.push(temp);
           }
-        });
         // ...existing code...
         this.setState({ rowData: this.rowDataT });
       })

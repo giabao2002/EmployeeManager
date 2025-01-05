@@ -93,6 +93,7 @@ class FamilyInfo extends Component {
     newInfo.preventDefault();
     console.log("zero data", newInfo.target[0].value);
     let body = {
+      id: info["_id"],
       Name: newInfo.target[0].value,
       Relationship: newInfo.target[1].value,
       DOB: newInfo.target[2].value,
@@ -101,7 +102,7 @@ class FamilyInfo extends Component {
     console.log("update", body);
     axios
       .put(
-        process.env.REACT_APP_API_URL + "/api/family-info/" + info["_id"],
+        process.env.REACT_APP_API_URL + "/api/family-info/" + this.props.data['_id'],
         body,
         {
           headers: {

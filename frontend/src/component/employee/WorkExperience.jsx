@@ -93,6 +93,7 @@ class WorkExperience extends Component {
     newInfo.preventDefault();
     console.log("zero data", newInfo.target[0].value);
     let body = {
+      id: info["_id"],
       CompanyName: newInfo.target[0].value,
       Designation: newInfo.target[1].value,
       FromDate: newInfo.target[2].value,
@@ -101,7 +102,7 @@ class WorkExperience extends Component {
     console.log("update", body);
     axios
       .put(
-        process.env.REACT_APP_API_URL + "/api/work-experience/" + info["_id"],
+        process.env.REACT_APP_API_URL + "/api/work-experience/" + this.props.data['_id'],
         body,
         {
           headers: {

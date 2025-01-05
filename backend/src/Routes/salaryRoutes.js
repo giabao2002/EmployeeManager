@@ -8,6 +8,6 @@ router.get("/:employeeCode", verifyHR, salaryService.getSalaryByEmployeeCode);
 router.get("/employee/:id", verifyEmployee, salaryService.getSalaryById);
 router.post("/:id", verifyAdminHR, salaryService.createSalary);
 router.put("/:id", verifyAdminHR, salaryService.updateSalary);
-router.delete("/:id", verifyHR, salaryService.deleteSalary);
+router.delete("/:id", verifyAdminHR, salaryService.deleteSalary);
 
 module.exports = router;

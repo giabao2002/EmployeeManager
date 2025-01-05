@@ -142,7 +142,7 @@ class Employee extends Component {
           DateOfJoining: event.target[13].value,
           TerminateDate: event.target[14].value,
         };
-                axios
+        axios
           .post(process.env.REACT_APP_API_URL + "/api/employee", body, {
             headers: {
               authorization: localStorage.getItem("token") || "",
@@ -153,12 +153,16 @@ class Employee extends Component {
           })
           .catch((err) => {
             this.setState({ table: false });
-        
+
             if (err.response && err.response.status === 400) {
+              console.log(err.response.data);
               Swal.fire({
                 icon: "error",
                 title: "Xảy ra lỗi",
-                text: err.response.data || "Vui lòng thử lại",
+                text:
+                  (typeof err.response.data === "object" &&
+                    err.response.data["message"]) ||
+                  "Vui lòng thử lại",
               });
             } else {
               Swal.fire({
