@@ -1,0 +1,43 @@
+#form-submit-button button {
+    background-color: #0069d9;
+    border-color: #0069d9;
+}
+#form-cancel-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0px;
+}
+#form-cancel-button button {
+    background-color: rgb(233, 233, 233);
+    border-color: rgb(233, 233, 233);
+    color: black;
+}
+#form-cancel-button button:focus {
+    outline: 0;
+    box-shadow: 0;
+}
+#form {
+    position: relative;
+    margin: 0;
+    font-size: 15px;
+}
+#role-form-outer-div {
+    width: 80%;
+    margin: 30px auto;
+}
+#role-form-title {
+    margin: 20px;
+}
+
+@media (max-width: 576px) {
+    #form-cancel-button-inner {
+        padding: 0px;
+    }
+}
+
+@media (max-width: 1000px) {
+    #role-form-title {
+        font-size: 22px;
+    }
+}

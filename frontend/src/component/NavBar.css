@@ -1,0 +1,60 @@
+#main-nav {
+  height: 70px;
+  background-color: white;
+  -webkit-box-shadow: 0px 10px 13px -11px rgba(6,12,34, 0.3);
+  -moz-box-shadow: 0px 10px 13px -11px rgba(6,12,34, 0.3);
+  box-shadow: 0px 10px 13px -11px rgba(6,12,34, 0.3);
+}
+#nav-bar-logo {
+  height: 50px;
+}
+#logout-navbar-nav {
+  width: 10%;
+  background-color: white;
+}
+#toggle-switch {
+  margin-left: 50px;
+  height: 50px;
+  float: right;
+  display: inline-block;
+  padding-top: 15px;
+}
+.navbar-right-content {
+  text-decoration: none;
+  padding: 10px;
+}
+.navBar-username {
+  float: right;
+  margin-right: 30px;
+}
+
+/* Logout button styling */
+.btnLogout {
+  background-color: #00bfff; /* Xanh biển */
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect */
+.btnLogout:hover {
+  background-color: #1b7bbb; /* Đổi màu xanh đậm hơn khi hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Click (active) effect */
+.btnLogout:active {
+  background-color: #125c91; /* Màu xanh đậm hơn khi nhấp */
+  transform: scale(0.95); /* Tạo hiệu ứng nút bị ấn xuống */
+}
+
+/* Focus effect */
+.btnLogout:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5); /* Đường viền sáng xanh */
+}

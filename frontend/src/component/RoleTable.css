@@ -1,0 +1,84 @@
+#add-button {
+  float: right;
+  background-color: #0069d9;
+  border: 0;
+  margin: 10px;
+  color: white;
+  -webkit-box-shadow: 0px 0px 9px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 9px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 9px -2px rgba(0, 0, 0, 0.75);
+}
+#add-button:hover {
+  -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 1);
+  -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 1);
+  box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 1);
+}
+#plus-icon {
+  margin-right: 10px;
+}
+#role-title {
+  display: inline-block;
+  margin: 10px;
+  font-size: 28px;
+}
+#role-table {
+  font-size: 15px;
+  width: 98%;
+  margin: 5px auto;
+  text-align: left;
+  border-collapse: collapse;
+}
+#table-div svg {
+  cursor: pointer;
+}
+#role-table tr {
+  border-bottom: 1px solid rgb(187, 187, 187);
+  height: 40px;
+}
+#role-table thead {
+  border-bottom: 1px solid rgb(187, 187, 187);
+  background-color: rgb(238, 238, 240);
+}
+#role-table th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#loading-bar {
+  width: 100%;
+}
+#inner-table-div {
+  overflow-x: auto;
+}
+#table-div {
+  width: 98%;
+  height: 550px;
+  margin: auto;
+  font-size: 14px !important;
+}
+.ag-header {
+  font-size: 14px !important;
+  height: 40px !important;
+}
+#clear-both {
+  clear: both;
+}
+
+@media (max-width: 1000px) {
+  #role-title {
+    font-size: 20px;
+    margin: 10px;
+    margin-top: 20px;
+  }
+  #inner-table-div {
+    overflow-x: auto;
+    width: 95%;
+    margin: auto;
+  }
+  #role-table th {
+    font-size: 15px;
+  }
+  #add-button {
+    margin: 10px;
+    margin-top: 20px;
+  }
+}
