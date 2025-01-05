@@ -267,7 +267,7 @@ class Statistics extends Component {
   render() {
     return (
       <div id="table-outer-div-scroll">
-        <h2 id="role-title">Chi tiết lương</h2>
+        <h2 id="role-title">Thông tin lương</h2>
         <div id="search-bar" className="d-flex align-items-center">
           <input
             type="text"

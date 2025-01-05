@@ -127,7 +127,7 @@ class ComplaintTable extends Component {
   render() {
     return (
       <div id="table-outer-div-scroll">
-        <h2 id="role-title">Complaints</h2>
+        <h2 id="role-title">Thông tin khiếu nại</h2>
 
         <Button
           variant="primary"

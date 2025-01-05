@@ -24,7 +24,7 @@ exports.createRole = (req, res) => {
           res.send("Error");
         } else {
           res.send(role);
-          console.log("Vai trò mới đã lưu");
+          console.log("Chức vụ mới đã lưu");
         }
       });
     }
@@ -58,22 +58,22 @@ exports.deleteRole = async (req, res) => {
       role: { $in: [req.params.id] },
     });
 
-    console.log("======Nhân viên với vai trò này:", employeesWithRole);
+    console.log("======Nhân viên với chức vụ này:", employeesWithRole);
 
     if (employeesWithRole.length === 0) {
       const deletedRole = await Role.findByIdAndRemove(req.params.id);
 
       if (deletedRole) {
-        console.log("Vai trò đã được xóa");
+        console.log("Chức vụ đã được xóa");
         return res.status(200).send(deletedRole);
       } else {
-        return res.status(404).send("Vai trò không tồn tại");
+        return res.status(404).send("Chức vụ không tồn tại");
       }
     } else {
       return res
         .status(403)
         .send(
-          "Vai trò này được liên kết với nhân viên nên bạn không thể xóa vai trò này"
+          "Chức vụ này được liên kết với nhân viên nên bạn không thể xóa chức vụ này"
         );
     }
   } catch (err) {

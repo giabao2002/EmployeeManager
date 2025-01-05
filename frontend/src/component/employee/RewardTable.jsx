@@ -111,7 +111,7 @@ class RewardTable extends Component {
   render() {
     return (
       <div id="table-outer-div-scroll">
-        <h2 id="role-title">Danh sách khen thưởng/kỷ luật</h2>
+        <h2 id="role-title">Thông tin khen thưởng/kỷ luật</h2>
         <div id="clear-both" />
         <div id="table-div" className="ag-theme-balham">
           <AgGridReact

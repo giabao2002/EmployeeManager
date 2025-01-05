@@ -13,25 +13,25 @@ class RoleForm extends Component {
   render() {
     return (
       <div>
-        <h2 id="role-form-title">Chỉnh sửa thông tin vai trò/chức vụ</h2>
+        <h2 id="role-form-title">Chỉnh sửa thông tin chức vụ</h2>
         <div id="role-form-outer-div">
           <Form
             id="form"
             onSubmit={(e) =>
               this.props.onRoleEditUpdate(
                 this.props.editData,
-                e.target[0].value,
+                e.target[0].value
               )
             }
           >
             <Form.Group as={Row}>
               <Form.Label column sm={2}>
-                Vai trò/chức vụ
+                Chức vụ
               </Form.Label>
               <Col sm={10} className="form-input">
                 <Form.Control
                   type="Text"
-                  placeholder="Vai trò"
+                  placeholder="Chức vụ"
                   name="RoleName"
                   required
                   value={this.state.RoleData}

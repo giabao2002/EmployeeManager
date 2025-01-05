@@ -194,7 +194,7 @@ class LeaveApplicationEmpTable extends Component {
   render() {
     return (
       <div id="table-outer-div-scroll">
-        <h2 id="role-title">Nghỉ phép</h2>
+        <h2 id="role-title">Đơn xin nghỉ phép</h2>
         <Button
           variant="primary"
           id="add-button"

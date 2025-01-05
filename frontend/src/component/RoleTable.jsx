@@ -25,7 +25,7 @@ class RoleTable extends Component {
 
     columnDefs: [
       {
-        headerName: "Vai trò",
+        headerName: "Chức vụ",
         field: "RoleName",
         sortable: true,
       },
@@ -112,7 +112,7 @@ class RoleTable extends Component {
               icon: "error",
               confirmButtonText: "OK",
             });
-          }); 
+          });
       }
     });
   };
@@ -142,7 +142,7 @@ class RoleTable extends Component {
   render() {
     return (
       <div id="table-outer-div-scroll">
-        <h2 id="role-title">Thông tin vai trò/chức vụ</h2>
+        <h2 id="role-title">Thông tin chức vụ</h2>
         <Button
           variant="primary"
           id="add-button"

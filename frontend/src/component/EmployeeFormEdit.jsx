@@ -146,12 +146,12 @@ class EmployeeFormEdit extends Component {
 
             <Form.Group as={Row}>
               <Form.Label column sm={2}>
-                Vai trò
+                Chức vụ
               </Form.Label>
               <Col sm={10} className="form-input">
                 <Form.Control as="select" name="role">
                   <option disabled selected>
-                    Chọn vai trò
+                    Chọn chức vụ
                   </option>
                   {this.state.roleData.map((data, index) => (
                     <option

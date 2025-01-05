@@ -296,7 +296,7 @@ class SalaryTable extends Component {
   render() {
     return (
       <div id="table-outer-div-scroll">
-        <h2 id="role-title">Chi tiết lương</h2>
+        <h2 id="role-title">Thông tin lương</h2>
         <Button
           variant="primary"
           id="add-button"

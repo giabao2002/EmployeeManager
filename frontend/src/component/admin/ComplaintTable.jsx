@@ -102,7 +102,7 @@ class ComplaintTable extends Component {
     console.log(this.state.rowData)
     return (
       <div id="table-outer-div-scroll">
-        <h2 id="role-title">Khiếu nại</h2>
+        <h2 id="role-title">Thông tin khiếu nại</h2>
         <div id="clear-both" />
 
         {!this.state.loading ? (

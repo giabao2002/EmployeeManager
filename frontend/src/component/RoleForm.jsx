@@ -6,17 +6,17 @@ class RoleForm extends Component {
   render() {
     return (
       <div>
-        <h2 id="role-form-title">Thêm vai trò/chức vụ</h2>
+        <h2 id="role-form-title">Thêm chức vụ</h2>
         <div id="role-form-outer-div">
           <Form id="form" onSubmit={this.props.onRoleSubmit}>
             <Form.Group as={Row}>
               <Form.Label column sm={2}>
-                Vai trò/chức vụ
+                Chức vụ
               </Form.Label>
               <Col sm={10} className="form-input">
                 <Form.Control
                   type="Text"
-                  placeholder="Vai trò/chức vụ"
+                  placeholder="Chức vụ"
                   name="Role"
                   required
                 />

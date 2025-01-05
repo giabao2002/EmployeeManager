@@ -118,12 +118,12 @@ class EmployeeForm extends Component {
 
             <Form.Group as={Row}>
               <Form.Label column sm={2}>
-                Vai trò
+                Chức vụ
               </Form.Label>
               <Col sm={10} className="form-input">
                 <Form.Control as="select" name="role" required>
                   <option disabled selected>
-                    Chọn vai trò
+                    Chọn chức vụ
                   </option>
                   {this.state.roleData.map((data, index) => (
                     <option

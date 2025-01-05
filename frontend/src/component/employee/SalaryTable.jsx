@@ -192,7 +192,7 @@ class SalaryTable extends Component {
     console.log("data", this.state.salaryData);
     return (
       <div id="table-outer-div-scroll">
-        <h2 id="role-title">Chi tiết lương</h2>
+        <h2 id="role-title">Thông tin lương</h2>
         <div id="search-bar" className="d-flex align-items-center">
           <Button
             variant="primary"

@@ -75,7 +75,7 @@ class Reward extends Component {
               <p>Tháng {month}:</p>
               <p>Tổng số tiền thưởng: {totalsByMonth[month].totalRewardAmount}</p>
               <p>Tổng số tiền vi phạm: {totalsByMonth[month].totalPenaltyAmount}</p>
-              <p>Tổng số tiền nhận được: {totalsByMonth[month].totalAmount}</p>
+              <p>Hiệu số: {totalsByMonth[month].totalAmount}</p>
             </div>
           ))}
         </div>
