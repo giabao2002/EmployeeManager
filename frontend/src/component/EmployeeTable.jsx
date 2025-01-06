@@ -299,6 +299,7 @@ class AdminEmployeeTable extends Component {
       )
       .then((response) => {
         this.employeeObj = response.data;
+        console.log(response.data);
         this.setState({ employeeData: response.data });
         this.setState({ loading: false });
         this.setState({ searchData: "" });

@@ -154,6 +154,10 @@ exports.searchEmployees = (req, res) => {
         path: "department",
         select: "DepartmentName",
       })
+      .populate({
+        path: "role",
+        select: "RoleName",
+      })
       .exec(function (err, employees) {
         if (err) {
           return res.status(500).send(err);
@@ -175,31 +179,40 @@ exports.searchEmployees = (req, res) => {
         res.send(filteredEmployees);
       });
   } else {
-    Employee.find({}, (err, employees) => {
-      if (err) {
-        console.error(err);
-        return res
-          .status(500)
-          .send("Error occurred while searching for employees");
-      }
+    Employee.find()
+      .populate({
+        path: "department",
+        select: "DepartmentName",
+      })
+      .populate({
+        path: "role",
+        select: "RoleName",
+      })
+      .exec((err, employees) => {
+        if (err) {
+          console.error(err);
+          return res
+            .status(500)
+            .send("Error occurred while searching for employees");
+        }
 
-      let filteredEmployees = employees.filter((employee) => {
-        const fieldValue = employee[type];
-        return (
-          typeof fieldValue === "string" &&
-          fieldValue
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .toLowerCase()
-            .includes(data)
-        );
+        let filteredEmployees = employees.filter((employee) => {
+          const fieldValue = employee[type];
+          return (
+            typeof fieldValue === "string" &&
+            fieldValue
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+              .toLowerCase()
+              .includes(data)
+          );
+        });
+
+        if (filteredEmployees.length === 0) {
+          return res.status(404).send("No employees found");
+        }
+
+        res.status(200).json(filteredEmployees);
       });
-
-      if (filteredEmployees.length === 0) {
-        return res.status(404).send("No employees found");
-      }
-
-      res.status(200).json(filteredEmployees);
-    });
   }
 };

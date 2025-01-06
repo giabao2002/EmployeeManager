@@ -68,7 +68,7 @@ class LeaveApplicationEmp extends Component {
   }
   handleLeaveApplicationEmpSubmit = (event) => {
     event.preventDefault();
-    console.log("id", event.target[0].value, event.target[1].value);
+    this.loadLeaveApplicationEmpData();
 
     const today = new Date();
     const tomorrow = new Date(today);
@@ -82,15 +82,6 @@ class LeaveApplicationEmp extends Component {
     FromDate.setHours(0, 0, 0, 0);
 
     console.log("FromDate", FromDate, 'Tomorrow', tomorrow);
-
-    if (FromDate < tomorrow) {
-      Swal.fire({
-        icon: "error",
-        title: "Ngày bắt đầu không thể là ngày trong quá khứ",
-        text: "Ngày bắt đầu phải ít nhất là ngày mai",
-      });
-      return;
-    }
 
     if (FromDate > ToDate) {
       Swal.fire({
@@ -113,9 +104,9 @@ class LeaveApplicationEmp extends Component {
       );
     });
 
-    // console.log("Leave applications this month", leaveApplicationsThisMonth);
+    console.log("Leave applications this month", leaveApplicationsThisMonth);
 
-    if (leaveApplicationsThisMonth.length >= 2) {
+    if (leaveApplicationsThisMonth.length > 2) {
       Swal.fire({
         icon: "error",
         title: "Bạn đã xin nghỉ đủ số buổi trong tháng",
@@ -144,6 +135,7 @@ class LeaveApplicationEmp extends Component {
         )
         .then((res) => {
           this.setState({ table: true });
+          window.location.reload(false); 
         })
         .catch((err) => {
           this.setState({ table: true });

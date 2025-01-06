@@ -12,6 +12,7 @@ class PersonalInfo extends Component {
     employeeCode: "",
     editFormGender: "",
     salaryInfo: {},
+    code: "",
   };
 
   render() {
@@ -42,7 +43,7 @@ class PersonalInfo extends Component {
                     <tbody>
                       <tr>
                         <td>Mã nhân viên:</td>
-                        <td>{this.state.employeeCode}</td>
+                        <td>{this.state.code}</td>
                       </tr>
                       <tr>
                         <td>Số tài khoản:</td>
@@ -149,7 +150,9 @@ class PersonalInfo extends Component {
         }
       )
       .then((response) => {
+        console.log('Response', response.data);
         this.setState({ employeeCode: response.data["_id"] });
+        this.setState({ code: response.data["EmployeeCode"] });
       })
       .catch((error) => {
         console.log(error);
@@ -168,7 +171,7 @@ class PersonalInfo extends Component {
         }
       )
       .then((response) => {
-        this.setState({ salaryInfo: response.data[0]["salary"][0] });
+        this.setState({ salaryInfo: response.data["salary"][0] });
       })
       .catch((error) => {
         console.log(error);

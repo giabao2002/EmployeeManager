@@ -25,9 +25,6 @@ class LeaveApplicationEmpForm extends Component {
               <Form.Label column sm={2}>Từ ngày</Form.Label>
               <Col sm={10} className="form-input">
                 <Form.Control type="date" required />
-                <Form.Text id="passwordHelpBlock" muted>
-                  Xin nghỉ trước 2 ngày so với ngày hiện tại
-                </Form.Text>
               </Col>
             </Form.Group>
             <Form.Group as={Row} controlId="formToDate">
