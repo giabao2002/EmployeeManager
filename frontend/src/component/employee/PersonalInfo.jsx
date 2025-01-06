@@ -47,7 +47,7 @@ class PersonalInfo extends Component {
                       </tr>
                       <tr>
                         <td>Số tài khoản:</td>
-                        <td>{this.state.salaryInfo["AccountNo"]}</td>
+                        <td>{this.state.salaryInfo["AccountNo"]?this.state.salaryInfo["AccountNo"]:null }</td>
                       </tr>
                       <tr>
                         <td>Tên tài khoản:</td>

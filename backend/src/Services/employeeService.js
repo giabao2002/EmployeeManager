@@ -41,6 +41,15 @@ exports.createEmployee = (req, res) => {
           .send({ type: "EmployeeCode", message: "Mã nhân viên đã tồn tại" });
       }
 
+      const existingEmail = await Employee.findOne({
+        Email: req.body.Email,
+      });
+      if (existingEmail) {
+        return res
+          .status(400)
+          .send({ type: "Email", message: "Email đã tồn tại" });
+      }
+
       const newEmployee = {
         Email: req.body.Email,
         Password: req.body.Password,

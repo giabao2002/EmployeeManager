@@ -68,20 +68,25 @@ class LeaveApplicationEmp extends Component {
   }
   handleLeaveApplicationEmpSubmit = (event) => {
     event.preventDefault();
-    this.loadLeaveApplicationEmpData();
+    console.log("id", event.target[0].value, event.target[1].value);
 
     const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate() + 1);
+    today.setHours(0, 0, 0, 0); // Reset time to 00:00:00 for accurate date comparison
 
     const FromDate = new Date(event.target[1].value);
     const ToDate = new Date(event.target[2].value);
 
     // Reset time to 00:00:00 for accurate date comparison
-    tomorrow.setHours(0, 0, 0, 0);
     FromDate.setHours(0, 0, 0, 0);
 
-    console.log("FromDate", FromDate, 'Tomorrow', tomorrow);
+    if (FromDate < today) {
+      Swal.fire({
+        icon: "error",
+        title: "Ngày bắt đầu không thể là ngày trong quá khứ",
+        text: "Ngày bắt đầu phải là ngày hiện tại hoặc tương lai",
+      });
+      return;
+    }
 
     if (FromDate > ToDate) {
       Swal.fire({
@@ -104,9 +109,9 @@ class LeaveApplicationEmp extends Component {
       );
     });
 
-    console.log("Leave applications this month", leaveApplicationsThisMonth);
+    // console.log("Leave applications this month", leaveApplicationsThisMonth);
 
-    if (leaveApplicationsThisMonth.length > 2) {
+    if (leaveApplicationsThisMonth.length >= 2) {
       Swal.fire({
         icon: "error",
         title: "Bạn đã xin nghỉ đủ số buổi trong tháng",
@@ -135,7 +140,6 @@ class LeaveApplicationEmp extends Component {
         )
         .then((res) => {
           this.setState({ table: true });
-          window.location.reload(false); 
         })
         .catch((err) => {
           this.setState({ table: true });
@@ -145,6 +149,7 @@ class LeaveApplicationEmp extends Component {
           });
         });
     }
+    window.location.reload();
   };
   handleAddLeaveApplicationEmp = () => {
     console.log("clicked1");

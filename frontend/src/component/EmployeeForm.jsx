@@ -249,7 +249,11 @@ class EmployeeForm extends Component {
                 Ngày kết thúc
               </Form.Label>
               <Col sm={10} className="form-input">
-                <Form.Control type="date" placeholder="Ngày kết thúc" />
+                <Form.Control
+                  type="date"
+                  placeholder="Ngày kết thúc"
+                  required
+                />
               </Col>
             </Form.Group>
 
