@@ -17,6 +17,7 @@ class PersonalInfoFormEdit extends Component {
     HobbiesData: this.props.editData["Hobbies"] || "",
     PresentAddressData: this.props.editData["PresentAddress"] || "",
     PermanetAddressData: this.props.editData["PermanetAddress"] || "",
+    Photo: null,
   };
   onEmailDataChange(e) {
     this.setState({ EmailData: e.target.value });
@@ -59,6 +60,9 @@ class PersonalInfoFormEdit extends Component {
     console.log(e.target.value);
     this.setState({ DOBData: e.target.value });
   };
+  onPhotoChange = (e) => {
+    this.setState({ Photo: e.target.files[0] });
+  };
 
   componentWillMount() {}
   render() {
@@ -69,7 +73,7 @@ class PersonalInfoFormEdit extends Component {
           <Form
             id="form"
             onSubmit={(e) =>
-              this.props.onPersonalInfoEditUpdate(this.props.editData, e)
+              this.props.onPersonalInfoEditUpdate(this.props.editData, e, this.state.Photo)
             }
           >
             <Form.Group as={Row}>
@@ -220,7 +224,7 @@ class PersonalInfoFormEdit extends Component {
               </Form.Label>
               <Col sm={10} className="form-input">
                 <Form.Control as="select" required>
-                  <option value="" disabled selected>
+                  <option defaultValue="" disabled selected>
                     Chọn nhóm máu
                   </option>
                   <option
@@ -316,6 +320,17 @@ class PersonalInfoFormEdit extends Component {
                   required
                   value={this.state.PermanetAddressData}
                   onChange={(value) => this.onPermanetAddressDataChange(value)}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row}>
+              <Form.Label column sm={2}>
+                Ảnh đại diện
+              </Form.Label>
+              <Col sm={10} className="form-input">
+                <Form.Control
+                  type="file"
+                  onChange={this.onPhotoChange}
                 />
               </Col>
             </Form.Group>

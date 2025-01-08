@@ -4,6 +4,7 @@ var express = require("express"),
   app = express();
 jwt = require("jsonwebtoken");
 require("dotenv").config();
+const path = require('path');
 
 const roleRoutes = require("./src/Routes/roleRoutes");
 const departmentRoutes = require("./src/Routes/departmentRoutes");
@@ -69,7 +70,6 @@ app.use("/api/personal-info", personalInfoRoutes);
 app.use("/api/education", educationRoutes);
 app.use("/api/family-info", familyInfoRoutes);
 app.use("/api/work-experience", workExperienceRoutes);
-
 
 app.get("/api/employee-salary/:id", verifyEmployee, async (req, res) => {
   try {
@@ -416,7 +416,7 @@ app.post("/api/login", (req, res) => {
       } else {
         Employee.findOne(
           { Email: req.body.email },
-          "Password _id Account FirstName LastName Status",
+          "Password _id Account FirstName LastName Status Photo",
           function (err, document) {
             if (err || document == null) {
               res.send("false");
@@ -428,6 +428,7 @@ app.post("/api/login", (req, res) => {
                     Account: document.Account,
                     FirstName: document.FirstName,
                     LastName: document.LastName,
+                    Photo: document.Photo || null
                   };
                   var token = jwt.sign(emp, jwtKey);
                   res.send(token);

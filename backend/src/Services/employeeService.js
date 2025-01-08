@@ -4,6 +4,25 @@ const {
   EmployeeValidationUpdate,
 } = require("../Models/Employee");
 const Joi = require("joi");
+let multer;
+try {
+  multer = require("multer");
+} catch (error) {
+  console.error("Multer module not found. Please install it using 'npm install multer'");
+  process.exit(1);
+}
+const path = require("path");
+
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+const upload = multer({ storage: storage });
 
 exports.getAllEmployees = (req, res) => {
   Employee.find()
@@ -77,39 +96,46 @@ exports.createEmployee = (req, res) => {
 };
 
 exports.updateEmployee = (req, res) => {
-  Joi.validate(req.body, EmployeeValidationUpdate, (err, result) => {
+  upload.single('Photo')(req, res, function (err) {
     if (err) {
-      console.log(err);
-      res.status(400).send(err.details[0].message);
-    } else {
-      let newEmployee = {
-        Email: req.body.Email,
-        Account: req.body.Account,
-        role: req.body.RoleID,
-        Gender: req.body.Gender,
-        FirstName: req.body.FirstName,
-        MiddleName: req.body.MiddleName,
-        LastName: req.body.LastName,
-        DOB: req.body.DOB,
-        ContactNo: req.body.ContactNo,
-        EmployeeCode: req.body.EmployeeCode,
-        department: req.body.DepartmentID,
-        DateOfJoining: req.body.DateOfJoining,
-        TerminateDate: req.body.TerminateDate,
-      };
-
-      Employee.findByIdAndUpdate(
-        req.params.id,
-        newEmployee,
-        function (err, employee) {
-          if (err) {
-            res.send("Error");
-          } else {
-            res.send(newEmployee);
-          }
-        }
-      );
+      return res.status(500).send("Error uploading file");
     }
+
+    Joi.validate(req.body, EmployeeValidationUpdate, (err, result) => {
+      if (err) {
+        console.log(err);
+        res.status(400).send(err.details[0].message);
+      } else {
+        let newEmployee = {
+          Email: req.body.Email,
+          Account: req.body.Account,
+          role: req.body.RoleID,
+          Gender: req.body.Gender,
+          FirstName: req.body.FirstName,
+          MiddleName: req.body.MiddleName,
+          LastName: req.body.LastName,
+          DOB: req.body.DOB,
+          ContactNo: req.body.ContactNo,
+          EmployeeCode: req.body.EmployeeCode,
+          department: req.body.DepartmentID,
+          DateOfJoining: req.body.DateOfJoining,
+          TerminateDate: req.body.TerminateDate,
+          Photo: req.file ? req.file.filename : req.body.Photo,
+        };
+
+        Employee.findByIdAndUpdate(
+          req.params.id,
+          newEmployee,
+          function (err, employee) {
+            if (err) {
+              res.send("Error");
+            } else {
+              res.send(newEmployee);
+            }
+          }
+        );
+      }
+    });
   });
 };
 

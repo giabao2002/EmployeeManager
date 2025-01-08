@@ -47,29 +47,30 @@ class PersonalInfo extends Component {
                       </tr>
                       <tr>
                         <td>Số tài khoản:</td>
-                        <td>{this.state.salaryInfo["AccountNo"]?this.state.salaryInfo["AccountNo"]:null }</td>
+                        <td>{this.state.salaryInfo && this.state.salaryInfo.AccountNo ? this.state.salaryInfo.AccountNo : 'N/A'}</td>
                       </tr>
                       <tr>
                         <td>Tên tài khoản:</td>
-                        <td>{this.state.salaryInfo["AccountHolderName"]}</td>
+                        <td>{this.state.salaryInfo && this.state.salaryInfo.AccountHolderName ? this.state.salaryInfo.AccountHolderName : 'N/A'}</td>
                       </tr>
                       <tr>
                         <td>Ngân hàng:</td>
-                        <td>{this.state.salaryInfo["BankName"]}</td>
+                        <td>{this.state.salaryInfo && this.state.salaryInfo.BankName ? this.state.salaryInfo.BankName : 'N/A'}</td>
                       </tr>
                       <tr>
                         <td>Lương cơ bản:</td>
-                        <td>{this.state.salaryInfo["BasicSalary"]} VND</td>
+                        <td>{this.state.salaryInfo && this.state.salaryInfo.BasicSalary ? `${this.state.salaryInfo.BasicSalary} VND` : 'N/A'}</td>
                       </tr>
                       <tr>
                         <td>Thuế khẩu trừ:</td>
-                        <td>{this.state.salaryInfo["TaxDeduction"]} VND</td>
+                        <td>{this.state.salaryInfo && this.state.salaryInfo.TaxDeduction ? `${this.state.salaryInfo.TaxDeduction} VND` : 'N/A'}</td>
                       </tr>
                       <tr>
                         <td>Lương tổng kết:</td>
                         <td>
-                          {this.state.salaryInfo["BasicSalary"] -
-                            this.state.salaryInfo["TaxDeduction"]}
+                          {this.state.salaryInfo && this.state.salaryInfo.BasicSalary && this.state.salaryInfo.TaxDeduction
+                            ? `${this.state.salaryInfo.BasicSalary - this.state.salaryInfo.TaxDeduction} VND`
+                            : 'N/A'}
                         </td>
                       </tr>
                     </tbody>
@@ -98,32 +99,44 @@ class PersonalInfo extends Component {
   handlePersonalInfoEditUpdate = (info, newInfo) => {
     newInfo.preventDefault();
     console.log("zero data", newInfo.target[0].value);
-    let body = {
-      Gender: this.state.editFormGender,
-      ContactNo: newInfo.target[5].value,
-      EmergencyContactNo: newInfo.target[6].value,
-      Email: newInfo.target[7].value,
-      PANcardNo: newInfo.target[8].value,
-      DOB: newInfo.target[9].value,
-      BloodGroup: newInfo.target[10].value,
-      Hobbies: newInfo.target[11].value,
-      PresentAddress: newInfo.target[12].value,
-      PermanetAddress: newInfo.target[13].value,
-    };
-    console.log("update", body);
+
+    const formData = new FormData();
+    formData.append("Gender", this.state.editFormGender);
+    formData.append("ContactNo", newInfo.target[5].value);
+    formData.append("EmergencyContactNo", newInfo.target[6].value);
+    formData.append("Email", newInfo.target[7].value);
+    formData.append("PANcardNo", newInfo.target[8].value);
+    formData.append("DOB", newInfo.target[9].value);
+    formData.append("BloodGroup", newInfo.target[10].value);
+    formData.append("Hobbies", newInfo.target[11].value);
+    formData.append("PresentAddress", newInfo.target[12].value);
+    formData.append("PermanetAddress", newInfo.target[13].value);
+
+    // Assuming the file input is at index 14
+    if (newInfo.target[14].files[0]) {
+      formData.append("Photo", newInfo.target[14].files[0]);
+    }
+
+    console.log("update", formData);
     axios
       .put(
         process.env.REACT_APP_API_URL + "/api/personal-info/" + info["_id"],
-        body,
+        formData,
         {
           headers: {
             authorization: localStorage.getItem("token") || "",
+            "Content-Type": "multipart/form-data",
           },
         }
       )
       .then((res) => {
+        // Save the new photo filename to localStorage
+        if (res.data.Photo) {
+          localStorage.setItem("Photo", res.data.Photo);
+        }
         this.setState({ table: false });
         this.setState({ table: true });
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);

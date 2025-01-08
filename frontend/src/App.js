@@ -34,6 +34,10 @@ class App extends Component {
         _id: localStorage.getItem("_id") || "",
         Account: localStorage.getItem("Account") || "",
         Name: localStorage.getItem("Name") || "",
+        Photo: localStorage.getItem("Photo")
+          ? localStorage.getItem("Photo") != "null" &&
+            localStorage.getItem("Photo")
+          : null,
       },
       isLogin: localStorage.getItem("isLogin") === "true",
     });
@@ -182,6 +186,10 @@ class App extends Component {
             localStorage.setItem(
               "Name",
               decodedData["FirstName"] + " " + decodedData["LastName"]
+            );
+            localStorage.setItem(
+              "Photo",
+              decodedData["Photo"] ? decodedData["Photo"] : null
             );
             this.componentDidMount();
 
