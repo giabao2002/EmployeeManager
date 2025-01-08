@@ -17,6 +17,7 @@ class PersonalInfo extends Component {
 
   render() {
     console.log("salaryInfo", this.state.salaryInfo);
+    const { salaryInfo } = this.state;
     return (
       <React.Fragment>
         {this.state.table ? (

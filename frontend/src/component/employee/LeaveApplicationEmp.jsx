@@ -109,9 +109,19 @@ class LeaveApplicationEmp extends Component {
       );
     });
 
-    // console.log("Leave applications this month", leaveApplicationsThisMonth);
 
-    if (leaveApplicationsThisMonth.length >= 2) {
+    const approvedLeavesThisMonth = leaveApplicationsThisMonth.filter(
+      (leave) => leave.Status == 2
+    );
+
+    const rejectedLeavesThisMonth = leaveApplicationsThisMonth.filter(
+      (leave) => leave.Status == 3
+    );
+
+    console.log("Approved leaves this month", approvedLeavesThisMonth);
+    console.log("Rejected leaves this month", rejectedLeavesThisMonth);
+
+    if (approvedLeavesThisMonth.length >= 2) {
       Swal.fire({
         icon: "error",
         title: "Bạn đã xin nghỉ đủ số buổi trong tháng",
@@ -149,7 +159,7 @@ class LeaveApplicationEmp extends Component {
           });
         });
     }
-    window.location.reload();
+    // window.location.reload();
   };
   handleAddLeaveApplicationEmp = () => {
     console.log("clicked1");
