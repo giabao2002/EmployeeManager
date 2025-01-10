@@ -104,7 +104,6 @@ class AdminProjectBidTable extends Component {
           let temp = {
             data,
             ProjectTitle: data["ProjectTitle"],
-            PortalName: data["portals"][0]["PortalName"],
             ProjectURL: data["ProjectURL"],
             EstimatedTime: data["EstimatedTime"],
             EstimatedCost: data["EstimatedCost"],

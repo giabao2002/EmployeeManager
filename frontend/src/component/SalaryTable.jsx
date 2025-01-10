@@ -173,13 +173,10 @@ class SalaryTable extends Component {
                 : "N/A",
 
             FinalSalary:
-              data["salary"][0]["AmountOfViolation"] &&
-              data["salary"][0]["AmountOfViolation"] > 0
-                ? data["salary"][0]["BasicSalary"] -
-                  data["salary"][0]["AmountOfViolation"] -
-                  data["salary"][0]["TaxDeduction"]
-                : data["salary"][0]["BasicSalary"] -
-                  data["salary"][0]["TaxDeduction"],
+              data["salary"][0]["BasicSalary"] -
+              (data["salary"][0]["BasicSalary"] *
+                data["salary"][0]["TaxDeduction"]) /
+                100,
             ReceivingDate: data["salary"][0]["ReceivingDate"] + " hàng tháng",
           };
           this.rowDataT.push(temp);
@@ -266,6 +263,7 @@ class SalaryTable extends Component {
         this.salaryObj.map((data) => {
           let temp = {
             data,
+            EmployeeCode: data["EmployeeCode"] ? data["EmployeeCode"] : "N/A",
             EmployeeName:
               data["LastName"] +
               " " +
@@ -279,6 +277,12 @@ class SalaryTable extends Component {
             IFSCcode: data["salary"][0]["IFSCcode"],
             TaxDeduction: data["salary"][0]["TaxDeduction"],
             ReceivingDate: data["salary"][0]["ReceivingDate"],
+            FinalSalary:
+              data["salary"][0]["BasicSalary"] -
+              (data["salary"][0]["BasicSalary"] *
+                data["salary"][0]["TaxDeduction"]) /
+                100,
+            ReceivingDate: data["salary"][0]["ReceivingDate"] + " hàng tháng",
           };
           this.rowDataT.push(temp);
         });

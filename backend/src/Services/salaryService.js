@@ -16,9 +16,11 @@ exports.getSalaryByEmployeeCode = (req, res) => {
   console.log(req.params.employeeCode);
   Employee.find({ EmployeeCode: req.params.employeeCode })
     .populate({ path: "salary" })
-    .select("FirstName LastName MiddleName")
+    .select("FirstName LastName MiddleName EmployeeCode")
     .exec((err, company) => {
-      let filteredCompany = company.filter((data) => data["salary"].length == 1);
+      let filteredCompany = company.filter(
+        (data) => data["salary"].length == 1
+      );
       res.send(filteredCompany);
     });
 };
