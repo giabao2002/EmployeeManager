@@ -127,7 +127,11 @@ app.get("/api/employee-salary/:id/:year/:month?", verifyEmployee, async (req, re
     });
 
     const totalRewards = filteredRewards.reduce((total, reward) => {
-      return total + reward.Amount;
+      if(reward.Type == 1){
+        return total + reward.Amount;
+      } else {
+        return total - reward.Amount;
+      }
     }, 0);
 
     const salary = employee.salary[0];

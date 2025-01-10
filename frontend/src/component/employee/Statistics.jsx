@@ -108,89 +108,99 @@ class Statistics extends Component {
         this.rowDataT = [];
 
         const dateOfJoining = new Date(this.salaryObj["DateOfJoining"]);
-          const currentDate = new Date();
-          const terminateDate = this.salaryObj["TerminateDate"]
-            ? new Date(this.salaryObj["TerminateDate"])
-            : null;
-          const endDate =
-            terminateDate && terminateDate < currentDate
-              ? terminateDate
-              : currentDate;
-          const monthsDifference =
-            (endDate.getFullYear() - dateOfJoining.getFullYear()) * 12 +
-            (endDate.getMonth() - dateOfJoining.getMonth());
+        const currentDate = new Date();
+        const terminateDate = this.salaryObj["TerminateDate"]
+          ? new Date(this.salaryObj["TerminateDate"])
+          : null;
+        const endDate =
+          terminateDate && terminateDate < currentDate
+            ? terminateDate
+            : currentDate;
+        const monthsDifference =
+          (endDate.getFullYear() - dateOfJoining.getFullYear()) * 12 +
+          (endDate.getMonth() - dateOfJoining.getMonth());
 
-          for (let i = 0; i <= monthsDifference; i++) {
-            const receivingDate = new Date(
-              dateOfJoining.getFullYear(),
-              dateOfJoining.getMonth() + i,
-              this.salaryObj["salary"][0]["ReceivingDate"]
-            );
+        for (let i = 0; i <= monthsDifference; i++) {
+          const receivingDate = new Date(
+            dateOfJoining.getFullYear(),
+            dateOfJoining.getMonth() + i,
+            this.salaryObj["salary"][0]["ReceivingDate"]
+          );
 
-            const bonus = this.salaryObj['rewards'].reduce((total, reward) => {
-              const rewardDate = new Date(reward.Date);
-              if (
-                rewardDate.getFullYear() === receivingDate.getFullYear() &&
-                rewardDate.getMonth() === receivingDate.getMonth()
-              ) {
+          const bonus = this.salaryObj["rewards"].reduce((total, reward) => {
+            const rewardDate = new Date(reward.Date);
+            if (
+              rewardDate.getFullYear() === receivingDate.getFullYear() &&
+              rewardDate.getMonth() === receivingDate.getMonth()
+            ) {
+              if (reward.Type == 1) {
                 return total + reward.Amount;
+              } else {
+                return total - reward.Amount;
               }
-              return total;
-            }, 0);
+            }
+            return total;
+          }, 0);
 
-            let temp = {
-              EmployeeCode: this.salaryObj["EmployeeCode"] ? this.salaryObj["EmployeeCode"] : "N/A",
-              EmployeeName:
-                (this.salaryObj["LastName"] ? this.salaryObj["LastName"] : "") +
-                " " +
-                (this.salaryObj["MiddleName"] ? this.salaryObj["MiddleName"] : "") +
-                " " +
-                (this.salaryObj["FirstName"] ? this.salaryObj["FirstName"] : ""),
-              BasicSalary:
-                this.salaryObj["salary"] &&
-                this.salaryObj["salary"][0] &&
-                this.salaryObj["salary"][0]["BasicSalary"]
-                  ? this.salaryObj["salary"][0]["BasicSalary"]
-                  : "N/A",
-              BankName:
-                this.salaryObj["salary"] &&
-                this.salaryObj["salary"][0] &&
-                this.salaryObj["salary"][0]["BankName"]
-                  ? this.salaryObj["salary"][0]["BankName"]
-                  : "N/A",
-              AccountNo:
-                this.salaryObj["salary"] &&
-                this.salaryObj["salary"][0] &&
-                this.salaryObj["salary"][0]["AccountNo"]
-                  ? this.salaryObj["salary"][0]["AccountNo"]
-                  : "N/A",
-              AccountHolderName:
-                this.salaryObj["salary"] &&
-                this.salaryObj["salary"][0] &&
-                this.salaryObj["salary"][0]["AccountHolderName"]
-                  ? this.salaryObj["salary"][0]["AccountHolderName"]
-                  : "N/A",
-              IFSCcode:
-                this.salaryObj["salary"] &&
-                this.salaryObj["salary"][0] &&
-                this.salaryObj["salary"][0]["IFSCcode"]
-                  ? this.salaryObj["salary"][0]["IFSCcode"]
-                  : "N/A",
-              TaxDeduction:
-                this.salaryObj["salary"] &&
-                this.salaryObj["salary"][0] &&
-                this.salaryObj["salary"][0]["TaxDeduction"]
-                  ? this.salaryObj["salary"][0]["TaxDeduction"]
-                  : "N/A",
+          let temp = {
+            EmployeeCode: this.salaryObj["EmployeeCode"]
+              ? this.salaryObj["EmployeeCode"]
+              : "N/A",
+            EmployeeName:
+              (this.salaryObj["LastName"] ? this.salaryObj["LastName"] : "") +
+              " " +
+              (this.salaryObj["MiddleName"]
+                ? this.salaryObj["MiddleName"]
+                : "") +
+              " " +
+              (this.salaryObj["FirstName"] ? this.salaryObj["FirstName"] : ""),
+            BasicSalary:
+              this.salaryObj["salary"] &&
+              this.salaryObj["salary"][0] &&
+              this.salaryObj["salary"][0]["BasicSalary"]
+                ? this.salaryObj["salary"][0]["BasicSalary"]
+                : "N/A",
+            BankName:
+              this.salaryObj["salary"] &&
+              this.salaryObj["salary"][0] &&
+              this.salaryObj["salary"][0]["BankName"]
+                ? this.salaryObj["salary"][0]["BankName"]
+                : "N/A",
+            AccountNo:
+              this.salaryObj["salary"] &&
+              this.salaryObj["salary"][0] &&
+              this.salaryObj["salary"][0]["AccountNo"]
+                ? this.salaryObj["salary"][0]["AccountNo"]
+                : "N/A",
+            AccountHolderName:
+              this.salaryObj["salary"] &&
+              this.salaryObj["salary"][0] &&
+              this.salaryObj["salary"][0]["AccountHolderName"]
+                ? this.salaryObj["salary"][0]["AccountHolderName"]
+                : "N/A",
+            IFSCcode:
+              this.salaryObj["salary"] &&
+              this.salaryObj["salary"][0] &&
+              this.salaryObj["salary"][0]["IFSCcode"]
+                ? this.salaryObj["salary"][0]["IFSCcode"]
+                : "N/A",
+            TaxDeduction:
+              this.salaryObj["salary"] &&
+              this.salaryObj["salary"][0] &&
+              this.salaryObj["salary"][0]["TaxDeduction"]
+                ? this.salaryObj["salary"][0]["TaxDeduction"]
+                : "N/A",
 
-              FinalSalary:
-                this.salaryObj["salary"][0]["BasicSalary"] -
-                (this.salaryObj["salary"][0]["BasicSalary"] * this.salaryObj["salary"][0]["TaxDeduction"] / 100) +
-                bonus,
-              ReceivingDate: receivingDate.toLocaleDateString("en-GB"),
-            };
-            this.rowDataT.push(temp);
-          }
+            FinalSalary:
+              this.salaryObj["salary"][0]["BasicSalary"] -
+              (this.salaryObj["salary"][0]["BasicSalary"] *
+                this.salaryObj["salary"][0]["TaxDeduction"]) /
+                100 +
+              bonus,
+            ReceivingDate: receivingDate.toLocaleDateString("en-GB"),
+          };
+          this.rowDataT.push(temp);
+        }
         // ...existing code...
         this.setState({ rowData: this.rowDataT });
       })
@@ -225,13 +235,22 @@ class Statistics extends Component {
         // ...existing code...
         const data = response.data;
         const dateOfJoining = new Date(data.DateOfJoining);
-        const terminateDate = data.TerminateDate ? new Date(data.TerminateDate) : new Date();
+        const terminateDate = data.TerminateDate
+          ? new Date(data.TerminateDate)
+          : new Date();
         const currentDate = new Date();
 
-        const searchDate = new Date(searchYearData, searchMonthData ? searchMonthData  : 0);
+        const searchDate = new Date(
+          searchYearData,
+          searchMonthData ? searchMonthData - 1 : 0
+        );
         console.log("searchDate", searchDate);
 
-        if (searchDate < dateOfJoining || searchDate > terminateDate || searchDate > currentDate) {
+        if (
+          searchDate < dateOfJoining ||
+          searchDate > terminateDate ||
+          searchDate > currentDate
+        ) {
           Swal.fire("Lỗi", "Thời gian không hợp lệ", "error");
           return;
         }

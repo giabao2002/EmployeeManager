@@ -127,12 +127,17 @@ class SalaryTable extends Component {
             );
 
             const bonus = this.salaryObj['rewards'].reduce((total, reward) => {
+              console.log('REWARD: ', reward)
               const rewardDate = new Date(reward.Date);
               if (
                 rewardDate.getFullYear() === receivingDate.getFullYear() &&
                 rewardDate.getMonth() === receivingDate.getMonth()
               ) {
-                return total + reward.Amount;
+                if(reward.Type == 1){
+                  return total + reward.Amount;
+                } else {
+                  return total - reward.Amount;
+                }
               }
               return total;
             }, 0);
