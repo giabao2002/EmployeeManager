@@ -198,11 +198,11 @@ class AdminEmployeeTable extends Component {
       });
   };
 
-  onEmployeeDelete = (e) => {
+  onEmployeeDelete = (e,status) => {
     console.log("Delete: ", e);
     Swal.fire({
       title: "Bạn có chắc chắn không?",
-      text: "Sau khi thực hiện tài khoản này sẽ bị dừng hoạt động!",
+      text: status === "Active" ? "Bạn chắc chắn muốn khóa tài khoản" : "Bạn chắc chắn muốn mở khóa tài khoản",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -215,7 +215,7 @@ class AdminEmployeeTable extends Component {
           .put(
             process.env.REACT_APP_API_URL + "/api/employee/status/" + e,
             {
-              Status: "Inactive",
+              Status: status === "Active" ? "Inactive" : "Active",
             },
             {
               headers: {
@@ -257,7 +257,12 @@ class AdminEmployeeTable extends Component {
       return (
         <FontAwesomeIcon
           icon={faLock}
-          onClick={() => this.onEmployeeDelete(params.data.data["_id"])}
+          onClick={() =>
+            this.onEmployeeDelete(
+              params.data.data["_id"],
+              params.data.data["Status"]
+            )
+          }
         />
       );
     } else {
