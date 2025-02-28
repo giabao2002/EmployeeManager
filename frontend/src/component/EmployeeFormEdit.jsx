@@ -16,8 +16,8 @@ class EmployeeFormEdit extends Component {
     DOBData: this.props.editData["DOB"].slice(0, 10),
     ContactNoData: this.props.editData["ContactNo"],
     EmployeeCodeData: this.props.editData["EmployeeCode"],
-    DateOfJoiningData: this.props.editData["DateOfJoining"].slice(0, 10),
-    TerminateDateData: this.props.editData["TerminateDate"].slice(0, 10),
+    DateOfJoiningData: this.props.editData["DateOfJoining"] ? this.props.editData["DateOfJoining"].slice(0, 10) : "",
+    TerminateDateData: this.props.editData["TerminateDate"]? this.props.editData["TerminateDate"].slice(0, 10) : "",
     DepartmentSelected: this.props.editData["department"],
     RoleSelected: this.props.editData["role"],
   };

@@ -36,6 +36,12 @@ const createEmployees = async () => {
         EmployeeCode: "BOSS001",
         Account: 1,
         Status: "Active",
+        EmergencyContactNo: "0123456789",
+        PANcardNo: "123456789",
+        Hobbies: "Không có",
+        PresentAddress: "Hà Nội",
+        PermanentAddress: "Hà Nội",
+        Photo:""
       },
       {
         FirstName: "B",
@@ -50,6 +56,12 @@ const createEmployees = async () => {
         EmployeeCode: "QLNS001",
         Account: 2,
         Status: "Active",
+        EmergencyContactNo: "0123456789",
+        PANcardNo: "123456789",
+        Hobbies: "Không có",
+        PresentAddress: "Hà Nội",
+        PermanentAddress: "Hà Nội",
+        Photo:""
       },
       {
         FirstName: "C",
@@ -64,6 +76,12 @@ const createEmployees = async () => {
         EmployeeCode: "EMP001",
         Account: 3,
         Status: "Active",
+        EmergencyContactNo: "0123456789",
+        PANcardNo: "123456789",
+        Hobbies: "Không có",
+        PresentAddress: "Hà Nội",
+        PermanentAddress: "Hà Nội",
+        Photo:""
       },
     ];
 
