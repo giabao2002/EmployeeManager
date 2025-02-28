@@ -10,7 +10,7 @@ class DepartmentForm extends Component {
         <h2 id="role-form-title">Thêm phòng ban</h2>
 
         <div id="role-form-outer-div">
-          <Form id="form" onSubmit={this.props.onDepartmentSubmit}>``
+          <Form id="form" onSubmit={this.props.onDepartmentSubmit}>
             <Form.Group as={Row}>
               <Form.Label column sm={2}>
                 Phòng ban
