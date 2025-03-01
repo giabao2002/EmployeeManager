@@ -14,6 +14,7 @@ class PersonalInfoFormEdit extends Component {
     ContactNoData: this.props.editData["ContactNo"],
     EmergencyContactNoData: this.props.editData["EmergencyContactNo"] || "",
     PANcardNoData: this.props.editData["PANcardNo"] || "",
+    BloodGroupData: this.props.editData["BloodGroup"] || "",
     HobbiesData: this.props.editData["Hobbies"] || "",
     PresentAddressData: this.props.editData["PresentAddress"] || "",
     PermanetAddressData: this.props.editData["PermanetAddress"] || "",
@@ -51,6 +52,9 @@ class PersonalInfoFormEdit extends Component {
   }
   onPermanetAddressDataChange(e) {
     this.setState({ PermanetAddressData: e.target.value });
+  }
+  onBloodGroupDataChange(e) {
+    this.setState({ BloodGroupData: e.target.value });
   }
   onGenderChange = (e) => {
     this.setState({ GenderData: e.target.value });
@@ -168,7 +172,6 @@ class PersonalInfoFormEdit extends Component {
                 <Form.Control
                   type="text"
                   placeholder="Số điện thoại khẩn cấp"
-                  required
                   value={this.state.EmergencyContactNoData}
                   onChange={(value) =>
                     this.onEmergencyContactNoDataChange(value)
@@ -198,7 +201,6 @@ class PersonalInfoFormEdit extends Component {
                 <Form.Control
                   type="text"
                   placeholder="Mã định danh"
-                  required
                   value={this.state.PANcardNoData}
                   onChange={(value) => this.onPANcardNoDataChange(value)}
                 />
@@ -212,7 +214,6 @@ class PersonalInfoFormEdit extends Component {
                 <Form.Control
                   type="date"
                   placeholder="Ngày sinh"
-                  required
                   value={this.state.DOBData}
                   onChange={(value) => this.onDOBDataChange(value)}
                 />
@@ -223,8 +224,8 @@ class PersonalInfoFormEdit extends Component {
                 Nhóm máu
               </Form.Label>
               <Col sm={10} className="form-input">
-                <Form.Control as="select" required>
-                  <option defaultValue="" disabled selected>
+                <Form.Control as="select" onChange={(value) => this.onBloodGroupDataChange(value)}>
+                  <option value="" selected>
                     Chọn nhóm máu
                   </option>
                   <option
@@ -286,7 +287,6 @@ class PersonalInfoFormEdit extends Component {
                 <Form.Control
                   type="text"
                   placeholder="Sở thích"
-                  required
                   value={this.state.HobbiesData}
                   onChange={(value) => this.onHobbiesDataChange(value)}
                 />
@@ -302,7 +302,6 @@ class PersonalInfoFormEdit extends Component {
                   as="textarea"
                   rows="3"
                   plassholder="Địa chỉ hiện tại"
-                  required
                   value={this.state.PresentAddressData}
                   onChange={(value) => this.onPresentAddressDataChange(value)}
                 />

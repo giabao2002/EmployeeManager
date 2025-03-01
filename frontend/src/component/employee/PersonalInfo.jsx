@@ -99,7 +99,7 @@ class PersonalInfo extends Component {
   };
   handlePersonalInfoEditUpdate = (info, newInfo) => {
     newInfo.preventDefault();
-    console.log("zero data", newInfo.target[0].value);
+    console.log("zero data", newInfo.target[10].value);
 
     const formData = new FormData();
     formData.append("Gender", this.state.editFormGender);
