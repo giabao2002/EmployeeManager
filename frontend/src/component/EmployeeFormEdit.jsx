@@ -128,13 +128,13 @@ class EmployeeFormEdit extends Component {
                     value="1"
                     selected={this.props.editData["Account"] === 1}
                   >
-                    Quản trị dự án
+                    Giám đốc
                   </option>
                   <option
                     value="2"
                     selected={this.props.editData["Account"] === 2}
                   >
-                    Quản trị nhân sự
+                    Quản lý nhân sự
                   </option>
                   <option
                     value="3"

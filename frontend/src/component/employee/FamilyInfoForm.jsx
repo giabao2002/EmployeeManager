@@ -17,7 +17,7 @@ class FamilyInfoForm extends Component {
                 Tên
               </Form.Label>
               <Col sm={10} className="form-input">
-                <Form.Control type="Text" placeholder="tên" required />
+                <Form.Control type="Text" placeholder="Tên người thân" required />
               </Col>
             </Form.Group>
             <Form.Group as={Row}>

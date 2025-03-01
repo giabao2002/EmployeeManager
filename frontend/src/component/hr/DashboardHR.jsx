@@ -79,7 +79,7 @@ class DashboardHR extends Component {
               <div id="sidebar-top-content" />
               <div id="main-title">
                 <FontAwesomeIcon icon={faUserTie} className="sidebar-icon" />
-                Quản trị nhân sự
+                Quản lý nhân sự
               </div>
               <ul className="navbar-ul">
                 <li>

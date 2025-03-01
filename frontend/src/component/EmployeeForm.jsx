@@ -110,7 +110,7 @@ class EmployeeForm extends Component {
               <Col sm={10} className="form-input">
                 <Form.Control as="select" required>
                   <option value="1">Quản trị</option>
-                  <option value="2">Quản trị nhân sự</option>
+                  <option value="2">Quản lý nhân sự</option>
                   <option value="3">Nhân viên</option>
                 </Form.Control>
               </Col>

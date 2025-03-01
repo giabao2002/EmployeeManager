@@ -64,7 +64,7 @@ class PersonalInfo extends Component {
                       </tr>
                       <tr>
                         <td>Thuế khẩu trừ:</td>
-                        <td>{this.state.salaryInfo && this.state.salaryInfo.TaxDeduction ? `${this.state.salaryInfo.TaxDeduction} VND` : 'N/A'}</td>
+                        <td>{this.state.salaryInfo && this.state.salaryInfo.TaxDeduction ? `${this.state.salaryInfo.TaxDeduction} %` : 'N/A'}</td>
                       </tr>
                       <tr>
                         <td>Lương tổng kết:</td>

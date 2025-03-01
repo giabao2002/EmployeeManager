@@ -165,9 +165,9 @@ class AdminEmployeeTable extends Component {
             Password: data["Password"],
             Account:
               data["Account"] === 1
-                ? "Quản trị dự án"
+                ? "Giám đốc"
                 : data["Account"] === 2
-                ? "Quản trị nhân sự"
+                ? "Quản lý nhân sự"
                 : data["Account"] === 3
                 ? "Nhân viên"
                 : "",
@@ -317,9 +317,9 @@ class AdminEmployeeTable extends Component {
             Password: data["Password"],
             Account:
               data["Account"] === 1
-                ? "Quản trị dự án"
+                ? "Giám đốc"
                 : data["Account"] === 2
-                ? "Quản trị nhân sự"
+                ? "Quản lý nhân sự"
                 : data["Account"] === 3
                 ? "Nhân viên"
                 : "",
