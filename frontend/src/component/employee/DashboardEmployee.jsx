@@ -134,7 +134,7 @@ class DashboardHR extends Component {
                     Khiếu nại
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to={"/employee/" + this.props.data["_id"] + "/salary"}>
                     <FontAwesomeIcon
                       icon={faCalendarDay}
@@ -142,7 +142,7 @@ class DashboardHR extends Component {
                     />
                     Lịch sử nhận lương
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to={"/employee/" + this.props.data["_id"] + "/reward"}>
                     <FontAwesomeIcon
@@ -158,7 +158,7 @@ class DashboardHR extends Component {
                       icon={faChartArea}
                       className="sidebar-icon"
                     />
-                    Thống kê lương
+                    Lịch sử nhận lương
                   </Link>
                 </li>
               </ul>
