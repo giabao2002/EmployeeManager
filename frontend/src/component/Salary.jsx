@@ -40,7 +40,21 @@ class Salary extends Component {
   }
   handleSalarySubmit = (event) => {
     event.preventDefault();
-    if (!(event.target[3].value == event.target[4].value)) {
+    const trimmedValues = Array.from(event.target).map(input => input.value.trim()).slice(0, -2);
+
+    console.log(trimmedValues);
+
+    if (trimmedValues.some(value => value === "")) {
+      Swal.fire({
+      title: "Thông báo",
+      text: "Không được để trống bất kỳ thông tin nào",
+      icon: "warning",
+      confirmButtonText: "OK",
+      });
+      return;
+    }
+
+    if (!(trimmedValues[3] === trimmedValues[4])) {
       Swal.fire({
         title: "Thông báo",
         text: "Số tài khoản ngân hàng bạn nhập không khớp",
@@ -48,17 +62,26 @@ class Salary extends Component {
         confirmButtonText: "OK",
       });
     } else {
-      console.log("id", event.target[0].value, event.target[1].value);
+      console.log("id", trimmedValues[0], trimmedValues[1]);
       this.setState({ table: true });
 
+      if(trimmedValues[7] < 0 || trimmedValues[7] > 35) {
+        Swal.fire({
+          title: "Thông báo",
+          text: "Thuế phải nằm trong khoảng từ 0 đến 35",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+      }
+
       let body = {
-        BasicSalary: event.target[1].value,
-        BankName: event.target[2].value,
-        AccountNo: event.target[3].value,
-        AccountHolderName: event.target[5].value,
-        IFSCcode: event.target[6].value,
-        TaxDeduction: event.target[7].value,
-        ReceivingDate: event.target[8].value,
+        BasicSalary: trimmedValues[1],
+        BankName: trimmedValues[2],
+        AccountNo: trimmedValues[3],
+        AccountHolderName: trimmedValues[5],
+        IFSCcode: trimmedValues[6],
+        TaxDeduction: trimmedValues[7],
+        ReceivingDate: trimmedValues[8],
       };
       axios
         .post(
@@ -75,6 +98,12 @@ class Salary extends Component {
         .then((res) => {
           this.setState({ table: false });
           this.setState({ table: true });
+          Swal.fire({
+            title: "Thông báo",
+            text: "Thêm thông tin lương thành công",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -110,7 +139,19 @@ class Salary extends Component {
 
   handleSalaryEditUpdate = (info, newInfo) => {
     newInfo.preventDefault();
-    if (!(newInfo.target[3].value === newInfo.target[4].value)) {
+    const trimmedValues = Array.from(newInfo.target).map(input => input.value.trim()).slice(0, -2);
+
+    if (trimmedValues.some(value => value === "")) {
+      Swal.fire({
+        title: "Thông báo",
+        text: "Không được để trống bất kỳ thông tin nào",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
+    if (!(trimmedValues[3] === trimmedValues[4])) {
       Swal.fire({
         title: "Thông báo",
         text: "Số tài khoản ngân hàng bạn nhập không khớp",
@@ -119,14 +160,13 @@ class Salary extends Component {
       });
     } else {
       let body = {
-        BasicSalary: newInfo.target[1].value,
-        BankName: newInfo.target[2].value,
-        AccountNo: newInfo.target[3].value,
-        AccountHolderName: newInfo.target[5].value,
-        IFSCcode: newInfo.target[6].value,
-        TaxDeduction: newInfo.target[7].value,
-        ReceivingDate: newInfo.target[8].value,
-        
+        BasicSalary: trimmedValues[1],
+        BankName: trimmedValues[2],
+        AccountNo: trimmedValues[3],
+        AccountHolderName: trimmedValues[5],
+        IFSCcode: trimmedValues[6],
+        TaxDeduction: trimmedValues[7],
+        ReceivingDate: trimmedValues[8],
       };
       console.log("update", body);
       axios

@@ -4,6 +4,7 @@ import axios from "axios";
 import RoleTable from "./RoleTable.jsx";
 import RoleForm from "./RoleForm.jsx";
 import RoleFormEdit from "./RoleFormEdit.jsx";
+import Swal from "sweetalert2";
 
 class Role extends Component {
   state = {
@@ -41,9 +42,19 @@ class Role extends Component {
     event.preventDefault();
     console.log("id", event.target[0].value, event.target[1].value);
     this.setState({ table: true });
+    
+    const roleName = event.target[0].value.trim();
+    if (roleName === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Lỗi",
+        text: "Tên chức vụ không được để trống",
+      });
+      return;
+    }
 
     let body = {
-      RoleName: event.target[0].value,
+      RoleName: event.target[0].value.trim(),
     };
     axios
       .post(process.env.REACT_APP_API_URL + "/api/role", body, {
@@ -54,6 +65,11 @@ class Role extends Component {
       .then((res) => {
         this.setState({ table: false });
         this.setState({ table: true });
+        Swal.fire({
+          icon: "success",
+          title: "Thành công",
+          text: "Thêm chức vụ thành công",
+        });
       })
       .catch((err) => {
         console.log(err);

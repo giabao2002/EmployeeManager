@@ -88,6 +88,7 @@ class AdminProjectBidForm extends Component {
                   type="number"
                   placeholder="Thời gian dự kiến (tháng)"
                   name="EstimatedTime"
+                  min="0"
                   required
                 />
               </Col>
@@ -101,6 +102,7 @@ class AdminProjectBidForm extends Component {
                 <Form.Control
                   type="number"
                   placeholder="Chi phí dự kiến"
+                  min="0"
                   name="EstimatedCost"
                   required
                 />

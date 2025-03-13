@@ -127,6 +127,7 @@ class SalaryForm extends Component {
                 <Form.Control
                   type="number"
                   placeholder="Thuế khấu trừ"
+                  min="0"
                   required
                 />
               </Col>

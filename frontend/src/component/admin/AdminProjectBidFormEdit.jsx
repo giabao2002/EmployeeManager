@@ -111,6 +111,7 @@ class AdminProjectBidFormEdit extends Component {
                 <Form.Control
                   type="number"
                   placeholder="Thời gian dự kiến (tháng)"
+                  min="0"
                   name="EstimatedTime"
                   required
                   value={this.state.EstimatedTimeData}
@@ -127,6 +128,7 @@ class AdminProjectBidFormEdit extends Component {
                 <Form.Control
                   type="number"
                   placeholder="Chi phí dự kiến"
+                  min="0"
                   name="EstimatedCost"
                   required
                   value={this.state.EstimatedCostData}

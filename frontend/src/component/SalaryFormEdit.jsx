@@ -194,6 +194,7 @@ class SalaryFormEdit extends Component {
                 <Form.Control
                   type="number"
                   placeholder="Thuế khấu trừ"
+                  min="0"
                   required
                   value={this.state.TaxDeductionData}
                   onChange={(value) => this.onTaxDeductionDataChange(value)}
