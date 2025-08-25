@@ -6,8 +6,8 @@ import Login from "./component/Login/Login.jsx";
 import Temp from "./component/Temp.jsx";
 // import NotFound404 from "./component/NotFound404.jsx";
 import DashboardAdmin from "./component/admin/Dashboard/DashboardAdmin.jsx";
-import DashboardHR from "./component/hr/DashboardHR.jsx";
-import DashboardEmployee from "./component/employee/DashboardEmployee.jsx";
+import DashboardHR from "./component/hr/Dashboard/DashboardHR.jsx";
+import DashboardEmployee from "./component/employee/Dashboard/DashboardEmployee.jsx";
 import { Switch } from "react-router";
 
 import {

@@ -3,14 +3,16 @@ import React, { Component } from "react";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { Switch } from "react-router";
 import { Redirect } from "react-router-dom";
-import Role from "../Role/Role.jsx";
-import NavBar from "../NavBar.jsx";
-import Department from "../Department/Department.jsx";
-import Employee from "../Employees/Employee.jsx";
-import Salary from "../Salary/Salary.jsx";
-import LeaveApplicationHR from "./LeaveApplicationHR.jsx";
-import Reward from "../Reward/Reward.jsx";
+import Role from "../../Role/Role.jsx";
+import NavBar from "../../NavBar.jsx";
+import Department from "../../Department/Department.jsx";
+import Employee from "../../Employees/Employee.jsx";
+import Salary from "../../Salary/Salary.jsx";
+import LeaveApplicationHR from "../LeaveApplication/LeaveApplicationHR.jsx";
+import Reward from "../../Reward/Reward.jsx";
 // import NotFound404 from "../NotFound404.jsx";
+
+import "./DashboardHR.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -65,7 +67,7 @@ class DashboardHR extends Component {
   render() {
     return (
       <Router>
-        <div id="outer-main-div">
+        <div id="outer-main-div" className="hr-dashboard">
           <div id="outer-nav">
             <NavBar
               loginInfo={this.props.data}

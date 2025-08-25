@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import RewardTable from "./RewardTable.jsx";
 import axios from "axios";
+import "./Reward.css";
 
 class Reward extends Component {
   state = {
@@ -59,27 +60,59 @@ class Reward extends Component {
     this.loadRewardData();
   }
 
+  formatCurrency = (amount) => {
+    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+  };
+
   render() {
     console.log("Reward.jsx: this.state.data: ", this.state.data);
     const { totalsByMonth, totalAmount } = this.calculateTotals();
+    const hasData = Object.keys(totalsByMonth).length > 0;
+
     return (
-      <React.Fragment>
+      <div className="reward-container">
         <RewardTable
           onAddReward={this.handleAddReward}
           onEditReward={this.handleEditReward}
           data={this.props.data}
         />
-        <div style={{ maxHeight: '400px', overflowY: 'auto', border: '1px solid black', margin: '10px'}}>
-          {Object.keys(totalsByMonth).map((month) => (
-            <div key={month} style={{ padding: '10px', margin: '10px' }}>
-              <p>Tháng {month}:</p>
-              <p>Tổng số tiền thưởng: {totalsByMonth[month].totalRewardAmount}</p>
-              <p>Tổng số tiền vi phạm: {totalsByMonth[month].totalPenaltyAmount}</p>
-              <p>Hiệu số: {totalsByMonth[month].totalAmount}</p>
+        
+        {hasData ? (
+          <div className="monthly-summary">
+            <div className="monthly-summary-header">
+              <span>Thống kê thưởng & phạt theo tháng</span>
+              <span>Tổng cộng: {this.formatCurrency(totalAmount)}</span>
             </div>
-          ))}
-        </div>
-      </React.Fragment>
+            <div className="monthly-summary-content">
+              {Object.keys(totalsByMonth)
+                .sort((a, b) => b - a) // Sắp xếp tháng giảm dần
+                .map((month) => (
+                <div key={month} className="month-item">
+                  <div className="month-title">Tháng {month}</div>
+                  <div className="amount-row">
+                    <span className="amount-label">Tổng tiền thưởng:</span>
+                    <span className="amount-value reward-amount">
+                      {this.formatCurrency(totalsByMonth[month].totalRewardAmount)}
+                    </span>
+                  </div>
+                  <div className="amount-row">
+                    <span className="amount-label">Tổng tiền phạt:</span>
+                    <span className="amount-value penalty-amount">
+                      {this.formatCurrency(totalsByMonth[month].totalPenaltyAmount)}
+                    </span>
+                  </div>
+                  <div className="amount-row">
+                    <span className="amount-label">Hiệu số:</span>
+                    <span className="amount-value total-amount">
+                      {this.formatCurrency(totalsByMonth[month].totalAmount)}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : null}
+      </div>
     );
   }
 }

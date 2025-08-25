@@ -1,95 +1,93 @@
 import React, { Component } from "react";
 import { Form, Button, Col, Row } from "react-bootstrap";
-import axios from "axios";
 
-class EducationForm extends Component {
+class WorkExperienceForm extends Component {
   state = {
-    SchoolUniversityData: this.props.editData["SchoolUniversity"],
-    DegreeData: this.props.editData["Degree"],
-    GradeData: this.props.editData["Grade"],
-    PassingOfYearData: this.props.editData["PassingOfYear"],
+    CompanyNameData: this.props.editData["CompanyName"],
+    DesignationData: this.props.editData["Designation"],
+    FromDateData: this.props.editData["FromDate"].slice(0, 10),
+    ToDateData: this.props.editData["ToDate"].slice(0, 10),
   };
-  onSchoolUniversityDataChange(e) {
-    this.setState({ SchoolUniversityData: e.target.value });
+  onCompanyNameDataChange(e) {
+    this.setState({ CompanyNameData: e.target.value });
   }
-  onDegreeDataChange(e) {
-    this.setState({ DegreeData: e.target.value });
+  onDesignationDataChange(e) {
+    this.setState({ DesignationData: e.target.value });
   }
-  onGradeDataChange(e) {
-    this.setState({ GradeData: e.target.value });
+  onFromDateDataChange(e) {
+    this.setState({ FromDateData: e.target.value });
   }
-  onPassingOfYearDataChange(e) {
-    this.setState({ PassingOfYearData: e.target.value });
+  onToDateDataChange(e) {
+    this.setState({ ToDateData: e.target.value });
   }
   componentWillMount() {}
 
   render() {
     return (
       <div>
-        <h2 id="role-form-title">Chỉnh sửa thông tin học vấn</h2>
+        <h2 id="role-form-title">Chỉnh sửa kinh nghiệm làm việc</h2>
         <div id="role-form-outer-div">
           <Form
             id="form"
             onSubmit={(e) =>
-              this.props.onEducationEditUpdate(this.props.editData, e)
+              this.props.onWorkExperienceEditUpdate(this.props.editData, e)
             }
           >
             <Form.Group as={Row}>
               <Form.Label column sm={2}>
-                Trường/Đại học
+                Tên công ty
               </Form.Label>
               <Col sm={10} className="form-input">
                 <Form.Control
                   type="Text"
-                  placeholder="Trường"
+                  placeholder="Tên công ty"
                   required
-                  value={this.state.SchoolUniversityData}
-                  onChange={(value) => this.onSchoolUniversityDataChange(value)}
+                  value={this.state.CompanyNameData}
+                  onChange={(value) => this.onCompanyNameDataChange(value)}
                 />
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
               <Form.Label column sm={2}>
-                Bằng
+                Chức vụ
               </Form.Label>
               <Col sm={10} className="form-input">
                 <Form.Control
                   type="Text"
-                  placeholder="Bằng "
+                  placeholder="Chức vụ"
                   required
-                  value={this.state.DegreeData}
-                  onChange={(value) => this.onDegreeDataChange(value)}
+                  value={this.state.DesignationData}
+                  onChange={(value) => this.onDesignationDataChange(value)}
                 />
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
               <Form.Label column sm={2}>
-                Loại
+                Từ ngày
               </Form.Label>
               <Col sm={10} className="form-input">
                 <Form.Control
-                  type="Text"
-                  placeholder="Loại"
+                  type="date"
                   required
-                  value={this.state.GradeData}
-                  onChange={(value) => this.onGradeDataChange(value)}
+                  value={this.state.FromDateData}
+                  onChange={(value) => this.onFromDateDataChange(value)}
                 />
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
               <Form.Label column sm={2}>
-                Năm tốt nghiệp
+                Đến ngày
               </Form.Label>
               <Col sm={10} className="form-input">
                 <Form.Control
-                  type="Text"
-                  placeholder="Năm tốt nghiệp"
+                  type="date"
                   required
-                  value={this.state.PassingOfYearData}
-                  onChange={(value) => this.onPassingOfYearDataChange(value)}
+                  value={this.state.ToDateData}
+                  onChange={(value) => this.onToDateDataChange(value)}
                 />
               </Col>
             </Form.Group>
+            <div className="button-group">
             <Form.Group as={Row} id="form-submit-button">
               <Col sm={{ span: 10, offset: 2 }}>
                 <Button type="submit">Cập nhật</Button>
@@ -102,6 +100,7 @@ class EducationForm extends Component {
                 </Button>
               </Col>
             </Form.Group>
+            </div>
           </Form>
         </div>
       </div>
@@ -109,4 +108,4 @@ class EducationForm extends Component {
   }
 }
 
-export default EducationForm;
+export default WorkExperienceForm;

@@ -6,10 +6,10 @@ import EmployeeForm from "./EmployeeForm.jsx";
 import EmployeeFormEdit from "./EmployeeFormEdit.jsx";
 import EmployeeInfo from "./EmployeeInfo.jsx";
 import { HashRouter as Router, Route } from "react-router-dom";
-import PersonalInfo from "../employee/PersonalInfo.jsx";
-import Education from "../employee/Education.jsx";
-import FamilyInfo from "../employee/FamilyInfo.jsx";
-import WorkExperience from "../employee/WorkExperience.jsx";
+import PersonalInfo from "../employee/Personalnfo/PersonalInfo.jsx";
+import Education from "../employee/Education/Education.jsx";
+import FamilyInfo from "../employee/FamilyInfo/FamilyInfo.jsx";
+import WorkExperience from "../employee/WorkExperience/WorkExperience.jsx";
 import Swal from "sweetalert2";
 
 class Employee extends Component {

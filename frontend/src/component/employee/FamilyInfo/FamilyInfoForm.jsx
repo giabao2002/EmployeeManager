@@ -1,53 +1,50 @@
 import React, { Component } from "react";
-// import "./EducationForm.css";
+// import "./FamilyInfoForm.css";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import axios from "axios";
 
-class EducationForm extends Component {
+class FamilyInfoForm extends Component {
   state = {};
   componentWillMount() {}
   render() {
     return (
       <div>
-        <h2 id="role-form-title">Thêm thông tin học vấn</h2>
+        <h2 id="role-form-title">Thêm thông tin gia đình</h2>
         <div id="role-form-outer-div">
-          <Form id="form" onSubmit={this.props.onEducationSubmit}>
+          <Form id="form" onSubmit={this.props.onFamilyInfoSubmit}>
             <Form.Group as={Row}>
               <Form.Label column sm={2}>
-                Trường
+                Tên
               </Form.Label>
               <Col sm={10} className="form-input">
-                <Form.Control type="Text" placeholder="Trường" required />
+                <Form.Control type="Text" placeholder="Tên người thân" required />
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
               <Form.Label column sm={2}>
-                Bằng
+                Mối quan hệ
               </Form.Label>
               <Col sm={10} className="form-input">
-                <Form.Control type="Text" placeholder="Bằng" required />
+                <Form.Control type="Text" placeholder="Mối quan hệ" required />
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
               <Form.Label column sm={2}>
-                Loại
+                Ngày sinh
               </Form.Label>
               <Col sm={10} className="form-input">
-                <Form.Control type="Text" placeholder="Loại" required />
+                <Form.Control type="date" required />
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
               <Form.Label column sm={2}>
-                Năm tốt nghiệp
+                Nghề nghiệp
               </Form.Label>
               <Col sm={10} className="form-input">
-                <Form.Control
-                  type="Text"
-                  placeholder="Năm tốt nghiệp"
-                  required
-                />
+                <Form.Control type="Text" placeholder="Nghề nghiệp" required />
               </Col>
             </Form.Group>
+            <div className="button-group">
             <Form.Group as={Row} id="form-submit-button">
               <Col sm={{ span: 10, offset: 2 }}>
                 <Button type="submit">Lưu</Button>
@@ -60,6 +57,7 @@ class EducationForm extends Component {
                 </Button>
               </Col>
             </Form.Group>
+            </div>
           </Form>
         </div>
       </div>
@@ -67,4 +65,4 @@ class EducationForm extends Component {
   }
 }
 
-export default EducationForm;
+export default FamilyInfoForm;

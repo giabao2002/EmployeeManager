@@ -1,0 +1,150 @@
+/* Container chính */
+.salary-info-container {
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+    padding: 20px;
+    position: relative;
+}
+
+/* Scrollbar styling */
+.salary-info-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.salary-info-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.salary-info-container::-webkit-scrollbar-thumb {
+    background: rgba(52, 152, 219, 0.2);
+    border-radius: 10px;
+}
+
+.salary-info-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(52, 152, 219, 0.4);
+}
+
+#role-title {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+#table-div {
+    width: 100%;
+    margin: 0 auto 30px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+#table-div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        rgba(52, 152, 219, 0.5), 
+        rgba(46, 204, 113, 0.5)
+    );
+}
+
+#table-div table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+}
+
+#table-div td {
+    padding: 15px 25px;
+    color: #2c3e50;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#table-div td:first-child {
+    width: 180px;
+    font-weight: 600;
+    color: #34495e;
+    background: rgba(52, 152, 219, 0.1);
+    border-radius: 8px 0 0 8px;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+#table-div td:last-child {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 0 8px 8px 0;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    font-weight: 500;
+    width: calc(100% - 180px);
+}
+
+#table-div tr {
+    transition: all 0.3s ease;
+}
+
+#table-div tr:hover {
+    transform: translateY(-2px);
+}
+
+#table-div tr:hover td:first-child {
+    background: rgba(52, 152, 219, 0.2);
+}
+
+#table-div tr:hover td:last-child {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Style cho các giá trị tiền tệ */
+#table-div td:last-child:has(+ td):contains('VND') {
+    color: #27ae60;
+    font-weight: 500;
+}
+
+/* Style cho các giá trị phần trăm */
+#table-div td:last-child:has(+ td):contains('%') {
+    color: #e74c3c;
+    font-weight: 500;
+}
+
+/* Style cho các giá trị N/A */
+#table-div td:contains('N/A') {
+    color: #95a5a6;
+    font-style: italic;
+}
+
+/* Animation cho hover effect */
+@keyframes softFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#table-div tr:hover {
+    animation: softFloat 2s infinite ease-in-out;
+}

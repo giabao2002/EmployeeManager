@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./PersonalInfo.css";
+import "./PersonalInfo.css";
 import axios from "axios";
 import PersonalInfoTable from "./PersonalInfoTable.jsx";
 import PersonalInfoFormEdit from "./PersonalInfoFormEdit.jsx";
@@ -29,7 +29,7 @@ class PersonalInfo extends Component {
               onGenderChange={this.handleEditFormGenderChange}
             />
           ) : (
-            <>
+            <div className="salary-info-container">
               <PersonalInfoTable
                 onAddPersonalInfo={this.handleAddPersonalInfo}
                 onEditPersonalInfo={this.handleEditPersonalInfo}
@@ -78,7 +78,7 @@ class PersonalInfo extends Component {
                   </table>
                 </div>
               </div>
-            </>
+            </div>
           )
         ) : (
           <div />

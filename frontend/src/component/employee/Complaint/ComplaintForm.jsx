@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button, Col, Row } from "react-bootstrap";
+import "./ComplaintForm.css";
 
 class ComplaintForm extends Component {
   state = {

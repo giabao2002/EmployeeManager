@@ -396,7 +396,7 @@ class AdminEmployeeTable extends Component {
           </Button>
           <Button
             variant="primary"
-            id="search-button"
+            id="search-button-reload"
             className="ml-2"
             onClick={this.loadEmployeeData.bind(this)}
           >

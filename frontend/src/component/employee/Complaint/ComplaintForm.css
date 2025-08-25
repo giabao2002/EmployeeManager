@@ -1,0 +1,153 @@
+#role-form-title {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#role-form-outer-div {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#role-form-outer-div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        rgba(52, 152, 219, 0.5), 
+        rgba(46, 204, 113, 0.5)
+    );
+    border-radius: 15px 15px 0 0;
+}
+
+#form {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.form-label {
+    color: #34495e;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-input .form-control {
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(52, 152, 219, 0.2);
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.form-input .form-control:focus {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(52, 152, 219, 0.5);
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.1);
+    outline: none;
+}
+
+/* Style cho textarea */
+.form-input textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Style cho input type date */
+.form-input input[type="date"].form-control {
+    padding: 8px 15px;
+}
+
+/* Style cho buttons */
+.btn-primary {
+    background: rgba(52, 152, 219, 0.2);
+    border: 2px solid rgba(52, 152, 219, 0.3);
+    color: #2980b9;
+    font-weight: 500;
+    padding: 8px 25px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.btn-primary:hover {
+    background: rgba(52, 152, 219, 0.9);
+    border-color: rgba(52, 152, 219, 0.9);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+}
+
+.btn-secondary {
+    background: rgba(149, 165, 166, 0.2);
+    border: 2px solid rgba(149, 165, 166, 0.3);
+    color: #7f8c8d;
+    font-weight: 500;
+    padding: 8px 25px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.btn-secondary:hover {
+    background: rgba(149, 165, 166, 0.9);
+    border-color: rgba(149, 165, 166, 0.9);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(149, 165, 166, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #role-form-outer-div {
+        padding: 20px;
+        margin: 0 15px;
+    }
+
+    .form-label {
+        margin-bottom: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+}
+
+/* Animation cho form khi load */
+@keyframes formAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#role-form-outer-div {
+    animation: formAppear 0.5s ease-out;
+}

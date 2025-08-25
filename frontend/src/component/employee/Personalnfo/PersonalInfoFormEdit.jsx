@@ -77,7 +77,11 @@ class PersonalInfoFormEdit extends Component {
           <Form
             id="form"
             onSubmit={(e) =>
-              this.props.onPersonalInfoEditUpdate(this.props.editData, e, this.state.Photo)
+              this.props.onPersonalInfoEditUpdate(
+                this.props.editData,
+                e,
+                this.state.Photo
+              )
             }
           >
             <Form.Group as={Row}>
@@ -224,7 +228,10 @@ class PersonalInfoFormEdit extends Component {
                 Nhóm máu
               </Form.Label>
               <Col sm={10} className="form-input">
-                <Form.Control as="select" onChange={(value) => this.onBloodGroupDataChange(value)}>
+                <Form.Control
+                  as="select"
+                  onChange={(value) => this.onBloodGroupDataChange(value)}
+                >
                   <option value="" selected>
                     Chọn nhóm máu
                   </option>
@@ -327,24 +334,23 @@ class PersonalInfoFormEdit extends Component {
                 Ảnh đại diện
               </Form.Label>
               <Col sm={10} className="form-input">
-                <Form.Control
-                  type="file"
-                  onChange={this.onPhotoChange}
-                />
+                <Form.Control type="file" onChange={this.onPhotoChange} />
               </Col>
             </Form.Group>
-            <Form.Group as={Row} id="form-submit-button">
-              <Col sm={{ span: 10, offset: 2 }}>
-                <Button type="submit">Lưu</Button>
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row} id="form-cancel-button">
-              <Col sm={{ span: 10, offset: 2 }} id="form-cancel-button-inner">
-                <Button type="reset" onClick={this.props.onFormEditClose}>
-                  Hủy
-                </Button>
-              </Col>
-            </Form.Group>
+            <div className="button-group">
+              <Form.Group as={Row} id="form-submit-button">
+                <Col sm={{ span: 10, offset: 2 }}>
+                  <Button type="submit">Lưu</Button>
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} id="form-cancel-button">
+                <Col sm={{ span: 10, offset: 2 }} id="form-cancel-button-inner">
+                  <Button type="reset" onClick={this.props.onFormEditClose}>
+                    Hủy
+                  </Button>
+                </Col>
+              </Form.Group>
+            </div>
           </Form>
         </div>
       </React.Fragment>

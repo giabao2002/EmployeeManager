@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./LeaveApplicationHRTable.css";
+import "./LeaveApplicationHRTable.css";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit, faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -88,7 +88,7 @@ class LeaveApplicationHRTable extends Component {
 
   loadLeaveApplicationHRData = (status = "") => {
     let url = process.env.REACT_APP_API_URL + "/api/leave-application-hr/status/";
-    if (status) {
+    if (status.length > 0) {
       url += status;
     }
 

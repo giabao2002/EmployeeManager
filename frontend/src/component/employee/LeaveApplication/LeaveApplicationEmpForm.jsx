@@ -47,6 +47,7 @@ class LeaveApplicationEmpForm extends Component {
                 </Form.Control>
               </Col>
             </Form.Group>
+            <div className="button-group">
             <Form.Group as={Row} id="form-submit-button">
               <Col sm={{ span: 10, offset: 2 }}>
                 <Button type="submit">Lưu</Button>
@@ -57,6 +58,7 @@ class LeaveApplicationEmpForm extends Component {
                 <Button type="reset" onClick={this.props.onFormClose}>Hủy</Button>
               </Col>
             </Form.Group>
+            </div>
           </Form>
         </div>
       </div>
