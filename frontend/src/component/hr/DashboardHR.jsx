@@ -3,13 +3,13 @@ import React, { Component } from "react";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { Switch } from "react-router";
 import { Redirect } from "react-router-dom";
-import Role from "../Role.jsx";
+import Role from "../Role/Role.jsx";
 import NavBar from "../NavBar.jsx";
-import Department from "../Department.jsx";
-import Employee from "../Employee.jsx";
-import Salary from "../Salary.jsx";
+import Department from "../Department/Department.jsx";
+import Employee from "../Employees/Employee.jsx";
+import Salary from "../Salary/Salary.jsx";
 import LeaveApplicationHR from "./LeaveApplicationHR.jsx";
-import Reward from "../Reward.jsx";
+import Reward from "../Reward/Reward.jsx";
 // import NotFound404 from "../NotFound404.jsx";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -76,7 +76,7 @@ class DashboardHR extends Component {
           </div>
           <div id="main-non-nav">
             <div id="sidebar">
-              <div id="sidebar-top-content" />
+              
               <div id="main-title">
                 <FontAwesomeIcon icon={faUserTie} className="sidebar-icon" />
                 Quản lý nhân sự
@@ -133,7 +133,7 @@ class DashboardHR extends Component {
               </ul>
             </div>
             <div id="main-area">
-              <div id="sidebar-top-content" />
+              
               <Switch>
                 <Redirect exact from="/hr" to="/hr/employee" />
                 <Route path="/hr/employee" component={EmployeeF} />

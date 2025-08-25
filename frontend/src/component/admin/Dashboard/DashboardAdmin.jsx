@@ -4,15 +4,15 @@ import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { Switch } from "react-router";
 import { Redirect } from "react-router-dom";
 
-import Role from "../Role.jsx";
-import NavBar from "../NavBar.jsx";
-import RoleForm from "../RoleForm.jsx";
-import Department from "../Department.jsx";
-import AdminPortal from "./AdminPortal.jsx";
-import AdminProjectBid from "./AdminProjectBid.jsx";
-import AdminSalary from "../Salary.jsx";
-import Complaint from "./Complaint.jsx";
-import Reward from "../Reward.jsx";
+import Role from "../../Role/Role.jsx";
+import NavBar from "../../NavBar.jsx";
+import RoleForm from "../../Role/RoleForm.jsx";
+import Department from "../../Department/Department.jsx";
+import AdminPortal from "../AdminPortal.jsx";
+import AdminProjectBid from "../Project/AdminProjectBid.jsx";
+import AdminSalary from "../../Salary/Salary.jsx";
+import Complaint from "../Complaint.jsx";
+import Reward from "../../Reward/Reward.jsx";
 // import NotFound404 from "../NotFound404.jsx";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -72,7 +72,7 @@ class DashboardAdmin extends Component {
   render() {
     return (
       <Router>
-        <div id="outer-main-div">
+        <div id="outer-main-div" className="admin-dashboard">
           <div id="outer-nav">
             <NavBar
               loginInfo={this.props.data}
@@ -84,7 +84,7 @@ class DashboardAdmin extends Component {
 
           <div id="main-non-nav">
             <div id="sidebar">
-              <div id="sidebar-top-content" />
+              
               <div id="main-title">
                 <FontAwesomeIcon icon={faUsersCog} className="sidebar-icon" />
                 Quản trị viên
@@ -150,7 +150,7 @@ class DashboardAdmin extends Component {
               </ul>
             </div>
             <div id="main-area">
-              <div id="sidebar-top-content" />
+              
               <Switch>
                 <Route exact path="/admin/role" component={RoleAdminF} />
                 <Route exact path="/admin/salary" component={AdminSalaryF} />

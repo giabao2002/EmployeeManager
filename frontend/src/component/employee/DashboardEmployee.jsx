@@ -60,7 +60,7 @@ class DashboardHR extends Component {
 
           <div id="main-non-nav">
             <div id="sidebar">
-              <div id="sidebar-top-content" />
+              
               <div id="main-title" className="main-title-employee">
                 <FontAwesomeIcon icon={faUsers} className="sidebar-icon" />
                 Nhân viên
@@ -164,7 +164,7 @@ class DashboardHR extends Component {
               </ul>
             </div>
             <div id="main-area">
-              <div id="sidebar-top-content" />
+              
               <Switch>
                 <Route
                   exact

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Login.css";
-import Logo from "../img/logo1.png";
+import Logo from "../../img/logo1.png";
 import { css } from "@emotion/core";
 import { ScaleLoader } from "react-spinners";
 
@@ -13,7 +13,7 @@ const override = css`
 class Login extends Component {
   render() {
     return (
-      <div>
+      <div className="login-body">
         <div className="container">
           <div id="main-outer-div">
             <div id="logo-div">

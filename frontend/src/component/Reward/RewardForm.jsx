@@ -92,7 +92,7 @@ class RewardForm extends Component {
                 <Form.Control type="text" placeholder="Khoản tiền" required />
               </Col>
             </Form.Group>
-
+            <div className="button-group">
             <Form.Group as={Row} id="form-submit-button">
               <Col sm={{ span: 10, offset: 2 }}>
                 <Button type="submit">Lưu</Button>
@@ -105,6 +105,7 @@ class RewardForm extends Component {
                 </Button>
               </Col>
             </Form.Group>
+            </div>
           </Form>
         </div>
       </div>

@@ -1,60 +1,132 @@
 #main-nav {
   height: 70px;
-  background-color: white;
-  -webkit-box-shadow: 0px 10px 13px -11px rgba(6,12,34, 0.3);
-  -moz-box-shadow: 0px 10px 13px -11px rgba(6,12,34, 0.3);
-  box-shadow: 0px 10px 13px -11px rgba(6,12,34, 0.3);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  position: sticky;
+  top: 0;
 }
+
 #nav-bar-logo {
-  height: 50px;
+  height: 45px;
+  transition: transform 0.3s ease;
 }
+
+#nav-bar-logo:hover {
+  transform: scale(1.05);
+}
+
+#logo-anchor {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
 #logout-navbar-nav {
-  width: 10%;
-  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
 }
-#toggle-switch {
-  margin-left: 50px;
-  height: 50px;
-  float: right;
-  display: inline-block;
-  padding-top: 15px;
-}
+
 .navbar-right-content {
   text-decoration: none;
-  padding: 10px;
+  padding: 10px 15px;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
-.navBar-username {
-  float: right;
-  margin-right: 30px;
+
+a.navbar-right-content{
+    color: black !important;
+    text-decoration: none;
+}
+
+.navbar-right-content:hover {
+  background: rgba(52, 152, 219, 0.1);
+  color: #3498db;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+  border-color: rgba(52, 152, 219, 0.2);
+}
+
+.navbar-right-content img {
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.navbar-right-content:hover img {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
 }
 
 /* Logout button styling */
 .btnLogout {
-  background-color: #00bfff; /* Xanh biển */
-  color: white;
+  background: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
   padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
+  font-size: 14px;
+  border: 1px solid rgba(231, 76, 60, 0.2);
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  font-weight: 500;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 15px;
 }
 
 /* Hover effect */
 .btnLogout:hover {
-  background-color: #1b7bbb; /* Đổi màu xanh đậm hơn khi hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  background: rgba(231, 76, 60, 0.9);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(231, 76, 60, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Click (active) effect */
 .btnLogout:active {
-  background-color: #125c91; /* Màu xanh đậm hơn khi nhấp */
-  transform: scale(0.95); /* Tạo hiệu ứng nút bị ấn xuống */
+  transform: translateY(0);
+  background: rgba(231, 76, 60, 1);
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
 }
 
 /* Focus effect */
 .btnLogout:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5); /* Đường viền sáng xanh */
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
+}
+
+/* Animation for hover */
+@keyframes buttonGlow {
+  0% {
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
+  }
+  50% {
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
+  }
+}
+
+.btnLogout:hover {
+  animation: buttonGlow 2s infinite;
 }

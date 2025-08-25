@@ -44,7 +44,7 @@ class AdminProjectBidFormEdit extends Component {
       status: event.target.value,
     });
   };
-  
+
   render() {
     return (
       <React.Fragment>
@@ -213,18 +213,20 @@ class AdminProjectBidFormEdit extends Component {
                 />
               </Col>
             </Form.Group>
-            <Form.Group as={Row} id="form-submit-button">
-              <Col sm={{ span: 10, offset: 2 }}>
-                <Button type="submit">Cập nhật</Button>
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row} id="form-cancel-button">
-              <Col sm={{ span: 10, offset: 2 }} id="form-cancel-button-inner">
-                <Button type="reset" onClick={this.props.onFormEditClose}>
-                  Hủy
-                </Button>
-              </Col>
-            </Form.Group>
+            <div className="button-group">
+              <Form.Group as={Row} id="form-submit-button">
+                <Col sm={{ span: 10, offset: 2 }}>
+                  <Button type="submit">Cập nhật</Button>
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} id="form-cancel-button">
+                <Col sm={{ span: 10, offset: 2 }} id="form-cancel-button-inner">
+                  <Button type="reset" onClick={this.props.onFormEditClose}>
+                    Hủy
+                  </Button>
+                </Col>
+              </Form.Group>
+            </div>
           </Form>
         </div>
       </React.Fragment>

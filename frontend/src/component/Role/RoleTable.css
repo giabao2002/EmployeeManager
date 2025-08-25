@@ -1,0 +1,70 @@
+
+#role-title {
+  display: inline-block;
+  margin: 20px 10px;
+  font-size: 24px;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+#table-div {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px auto;
+  width: 98%;
+  height: auto;
+  min-height: 400px;
+}
+
+#table-div svg {
+  cursor: pointer;
+  color: #6c757d;
+  transition: color 0.2s ease;
+  font-size: 16px;
+  margin: 0 4px;
+}
+
+#table-div svg:hover {
+  color: #0069d9;
+}
+#loading-bar {
+  width: 100%;
+}
+#inner-table-div {
+  overflow-x: auto;
+}
+#table-div {
+  width: 98%;
+  height: 550px;
+  margin: auto;
+  font-size: 14px !important;
+}
+.ag-header {
+  font-size: 14px !important;
+  height: 40px !important;
+}
+#clear-both {
+  clear: both;
+}
+
+@media (max-width: 1000px) {
+  #role-title {
+    font-size: 20px;
+    margin: 10px;
+    margin-top: 20px;
+  }
+  #inner-table-div {
+    overflow-x: auto;
+    width: 95%;
+    margin: auto;
+  }
+  #role-table th {
+    font-size: 15px;
+  }
+  #add-button {
+    margin: 10px;
+    margin-top: 20px;
+  }
+}

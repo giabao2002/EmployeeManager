@@ -28,6 +28,7 @@ class RoleTable extends Component {
         headerName: "Chức vụ",
         field: "RoleName",
         sortable: true,
+        width: 1000,
       },
       {
         headerName: "",
@@ -141,7 +142,7 @@ class RoleTable extends Component {
 
   render() {
     return (
-      <div id="table-outer-div-scroll">
+      <div id="table-outer-div-scroll" className="role-table-container">
         <h2 id="role-title">Thông tin chức vụ</h2>
         <Button
           variant="primary"

@@ -14,6 +14,7 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import Swal from "sweetalert2";
+import "./SalaryTable.css";
 
 const override = css`
   display: block;

@@ -35,7 +35,7 @@ class DepartmentForm extends Component {
                 />
               </Col>
             </Form.Group>
-
+            <div className="button-group">
             <Form.Group as={Row} id="form-submit-button">
               <Col sm={{ span: 10, offset: 2 }}>
                 <Button type="submit">Cập nhật</Button>
@@ -48,6 +48,7 @@ class DepartmentForm extends Component {
                 </Button>
               </Col>
             </Form.Group>
+            </div>
           </Form>
         </div>
       </div>

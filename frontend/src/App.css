@@ -3,3 +3,186 @@ body {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
+
+/* Nút Thêm */
+#add-button {
+    float: right;
+    background: rgba(52, 152, 219, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 24px;
+    color: #2980b9;
+    border-radius: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+    margin-right: 15px;
+}
+
+#add-button:hover {
+    background: rgba(52, 152, 219, 0.9);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+}
+
+#plus-icon {
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+/* Form */
+#role-form-outer-div {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#role-form-title {
+    color: #2c3e50;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+#form {
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding-right: 15px;
+    padding-bottom: 50px;
+}
+
+/* Custom scrollbar */
+#form::-webkit-scrollbar {
+    width: 8px;
+}
+
+#form::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+#form::-webkit-scrollbar-thumb {
+    background: rgba(52, 152, 219, 0.5);
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    color: #34495e;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.form-input select,
+.form-input input {
+    width: 100%;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(52, 152, 219, 0.3);
+    border-radius: 8px;
+    font-size: 14px;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.form-input select:focus,
+.form-input input:focus {
+    outline: none;
+    border-color: rgba(52, 152, 219, 0.8);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Button styles */
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding-right: 15px;
+}
+
+#form-submit-button {
+    margin: 0;
+}
+
+#form-cancel-button {
+    margin: 0;
+    position: static !important;
+}
+
+#form-submit-button button {
+    background: rgba(52, 152, 219, 0.9);
+    border: none;
+    padding: 12px 30px;
+    color: white;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+#form-submit-button button:hover {
+    background: rgb(41, 128, 185);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+#form-cancel-button button {
+    background: rgba(231, 76, 60, 0.1);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    padding: 12px 30px;
+    color: #c0392b;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #role-form-outer-div {
+        width: 95%;
+        padding: 20px;
+        margin: 10px auto;
+    }
+
+    #role-form-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        margin-bottom: 5px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    #form-submit-button button,
+    #form-cancel-button button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}

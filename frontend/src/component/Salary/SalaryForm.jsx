@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Form, Button, Col, Row } from "react-bootstrap";
+import "./SalaryForm.css";
 
 class SalaryForm extends Component {
   state = {
@@ -145,18 +146,20 @@ class SalaryForm extends Component {
               </Col>
             </Form.Group>
 
-            <Form.Group as={Row} id="form-submit-button">
-              <Col sm={{ span: 10, offset: 2 }}>
-                <Button type="submit">Lưu</Button>
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row} id="form-cancel-button">
-              <Col sm={{ span: 10, offset: 2 }} id="form-cancel-button-inner">
-                <Button type="reset" onClick={this.props.onFormClose}>
-                  Hủy
-                </Button>
-              </Col>
-            </Form.Group>
+            <div className="button-group">
+              <Form.Group as={Row} id="form-submit-button">
+                <Col>
+                  <Button type="submit">Lưu</Button>
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} id="form-cancel-button">
+                <Col id="form-cancel-button-inner">
+                  <Button type="reset" onClick={this.props.onFormClose}>
+                    Hủy
+                  </Button>
+                </Col>
+              </Form.Group>
+            </div>
           </Form>
         </div>
       </div>
