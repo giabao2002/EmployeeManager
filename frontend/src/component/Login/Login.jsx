@@ -3,6 +3,8 @@ import "./Login.css";
 import Logo from "../../img/logo1.png";
 import { css } from "@emotion/core";
 import { ScaleLoader } from "react-spinners";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
 const override = css`
   display: block;
@@ -19,33 +21,43 @@ class Login extends Component {
             <div id="logo-div">
               <img id="logo-img" src={Logo} alt="" />
             </div>
-            <div id="title-div">
-              <h4 className="title">Đăng nhập</h4>
-            </div>
+            <h2 className="title">Login</h2>
             <div id="outer-login-form-div">
               <form action="" method="" onSubmit={this.props.onSubmit}>
-                <input
-                  className="login-form-input"
-                  type="text"
-                  placeholder="Email"
-                  required="required"
-                  name="Username"
-                />
-                <input
-                  className="login-form-input"
-                  type="password"
-                  placeholder="Mật khẩu"
-                  required="required"
-                />
-                <input
-                  className="login-form-input"
-                  type="submit"
-                  value="Đăng nhập"
-                  id="submitBtn"
-                />
+                <div className="input-group">
+                  <FontAwesomeIcon icon={faUser} className="input-icon" />
+                  <input
+                    className="login-form-input"
+                    type="text"
+                    placeholder="Username"
+                    required="required"
+                    name="Username"
+                  />
+                </div>
+                <div className="input-group">
+                  <FontAwesomeIcon icon={faLock} className="input-icon" />
+                  <input
+                    className="login-form-input"
+                    type="password"
+                    placeholder="Password"
+                    required="required"
+                  />
+                </div>
+                <div className="form-options">
+                  <div className="remember-me">
+                    <input type="checkbox" id="remember" />
+                    <label htmlFor="remember">Remember me</label>
+                  </div>
+                  <button type="button" className="forgot-password">
+                    Forgot password?
+                  </button>
+                </div>
+                <input type="submit" value="Login" id="submitBtn" />
                 {!this.props.pass ? (
                   <p className="alert">
-                    {this.props.mess ? this.props.mess : "Tên người dùng hoặc mật khẩu không hợp lệ!"}
+                    {this.props.mess
+                      ? this.props.mess
+                      : "Invalid username or password!"}
                   </p>
                 ) : (
                   ""
@@ -57,7 +69,7 @@ class Login extends Component {
                 css={override}
                 sizeUnit={"px"}
                 size={150}
-                color={"#123abc"}
+                color={"#ffffff"}
                 loading={this.props.loading}
               />
             </div>
