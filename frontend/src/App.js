@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
 import jwt from "jsonwebtoken";
-import Login from "./component/Login.jsx";
+import Login from "./component/Login/Login.jsx";
 import Temp from "./component/Temp.jsx";
 // import NotFound404 from "./component/NotFound404.jsx";
-import DashboardAdmin from "./component/admin/DashboardAdmin.jsx";
-import DashboardHR from "./component/hr/DashboardHR.jsx";
-import DashboardEmployee from "./component/employee/DashboardEmployee.jsx";
+import DashboardAdmin from "./component/admin/Dashboard/DashboardAdmin.jsx";
+import DashboardHR from "./component/hr/Dashboard/DashboardHR.jsx";
+import DashboardEmployee from "./component/employee/Dashboard/DashboardEmployee.jsx";
 import { Switch } from "react-router";
 
 import {
