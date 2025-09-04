@@ -275,7 +275,7 @@ class Statistics extends Component {
       })
       .catch((error) => {
         console.log(error);
-        Swal.fire("Error", "Failed to fetch salary data", "error");
+        Swal.fire("Error", "Bạn cần nhập đủ thông tin", "error");
       });
   };
 

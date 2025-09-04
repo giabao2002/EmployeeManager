@@ -16,8 +16,12 @@ class EmployeeFormEdit extends Component {
     DOBData: this.props.editData["DOB"].slice(0, 10),
     ContactNoData: this.props.editData["ContactNo"],
     EmployeeCodeData: this.props.editData["EmployeeCode"],
-    DateOfJoiningData: this.props.editData["DateOfJoining"] ? this.props.editData["DateOfJoining"].slice(0, 10) : "",
-    TerminateDateData: this.props.editData["TerminateDate"]? this.props.editData["TerminateDate"].slice(0, 10) : "",
+    DateOfJoiningData: this.props.editData["DateOfJoining"]
+      ? this.props.editData["DateOfJoining"].slice(0, 10)
+      : "",
+    TerminateDateData: this.props.editData["TerminateDate"]
+      ? this.props.editData["TerminateDate"].slice(0, 10)
+      : "",
     DepartmentSelected: this.props.editData["department"],
     RoleSelected: this.props.editData["role"],
   };
@@ -358,18 +362,20 @@ class EmployeeFormEdit extends Component {
               </Col>
             </Form.Group>
 
-            <Form.Group as={Row} id="form-submit-button">
-              <Col sm={{ span: 10, offset: 2 }}>
-                <Button type="submit">Cập nhật</Button>
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row} id="form-cancel-button">
-              <Col sm={{ span: 10, offset: 2 }} id="form-cancel-button-inner">
-                <Button type="reset" onClick={this.props.onFormEditClose}>
-                  Hủy
-                </Button>
-              </Col>
-            </Form.Group>
+            <div className="button-group">
+              <Form.Group as={Row} id="form-submit-button">
+                <Col sm={{ span: 10, offset: 2 }}>
+                  <Button type="submit">Cập nhật</Button>
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} id="form-cancel-button">
+                <Col sm={{ span: 10, offset: 2 }} id="form-cancel-button-inner">
+                  <Button type="reset" onClick={this.props.onFormEditClose}>
+                    Hủy
+                  </Button>
+                </Col>
+              </Form.Group>
+            </div>
           </Form>
         </div>
       </React.Fragment>

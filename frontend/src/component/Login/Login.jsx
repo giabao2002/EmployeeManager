@@ -21,7 +21,7 @@ class Login extends Component {
             <div id="logo-div">
               <img id="logo-img" src={Logo} alt="" />
             </div>
-            <h2 className="title">Login</h2>
+            <h2 className="title">Đăng nhập</h2>
             <div id="outer-login-form-div">
               <form action="" method="" onSubmit={this.props.onSubmit}>
                 <div className="input-group">
@@ -29,9 +29,9 @@ class Login extends Component {
                   <input
                     className="login-form-input"
                     type="text"
-                    placeholder="Username"
+                    placeholder="Email"
                     required="required"
-                    name="Username"
+                    name="Email"
                   />
                 </div>
                 <div className="input-group">
@@ -39,25 +39,25 @@ class Login extends Component {
                   <input
                     className="login-form-input"
                     type="password"
-                    placeholder="Password"
+                    placeholder="Mật khẩu"
                     required="required"
                   />
                 </div>
                 <div className="form-options">
                   <div className="remember-me">
                     <input type="checkbox" id="remember" />
-                    <label htmlFor="remember">Remember me</label>
+                    <label htmlFor="remember">Ghi nhớ tôi</label>
                   </div>
                   <button type="button" className="forgot-password">
-                    Forgot password?
+                    Quên mật khẩu?
                   </button>
                 </div>
-                <input type="submit" value="Login" id="submitBtn" />
+                <input type="submit" value="Đăng nhập" id="submitBtn" />
                 {!this.props.pass ? (
                   <p className="alert">
                     {this.props.mess
                       ? this.props.mess
-                      : "Invalid username or password!"}
+                      : "Tên người dùng hoặc mật khẩu không hợp lệ!"}
                   </p>
                 ) : (
                   ""

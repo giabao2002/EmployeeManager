@@ -29,7 +29,7 @@ class RewardForm extends Component {
   render() {
     return (
       <div>
-        <h2 id="role-form-title">Thêm phần thưởng</h2>
+        <h2 id="role-form-title">Thêm khen thưởng/kỷ luật</h2>
         <div id="role-form-outer-div">
           <Form id="form" onSubmit={this.props.onRewardSubmit}>
             <Form.Group as={Row}>
